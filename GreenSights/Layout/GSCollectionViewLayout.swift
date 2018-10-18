@@ -8,6 +8,7 @@
 
 import UIKit
 
+//ELENA
 protocol GSCollectionViewLayoutDelegate: class {
     
     func collectionView(_ collectionView:UICollectionView, typeForCellAtIndexPath indexPath:IndexPath) -> cellType
