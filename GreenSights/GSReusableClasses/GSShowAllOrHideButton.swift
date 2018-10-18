@@ -14,9 +14,9 @@ class GSShowAllOrHideButton: UIButton {
 		super.init(frame: frame)
 		self.setTitle("Show All", for: .normal)
 		self.setTitle("Hide", for: .selected)
-		self.setTitleColor(GSSettings.UI.Colors.tintColor, for: .normal)
-		self.setTitleColor(GSSettings.UI.Colors.tintColor, for: .selected)
-		self.titleLabel?.font = GSSettings.UI.Fonts.helveticaRegular?.withSize(18)
+		self.setTitleColor(GSSettings.ui.colors.tintColor, for: .normal)
+		self.setTitleColor(GSSettings.ui.colors.tintColor, for: .selected)
+		self.titleLabel?.font = GSSettings.ui.fonts.helveticaRegular?.withSize(18)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {

@@ -10,13 +10,13 @@ import UIKit
 
 class GSStarButton: UIButton {
     
-	let mySpotId: String = ""
+	let representingSpotID: String = ""
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.setImage(UIImage(named: GSSettings.UI.NavBarIcons.starUnselected)?.withRenderingMode(.alwaysTemplate), for: .normal)
-		self.setImage(UIImage(named: GSSettings.UI.NavBarIcons.starSelected)?.withRenderingMode(.alwaysTemplate), for: .selected)
-		self.tintColor = GSSettings.UI.Colors.tintColor
+		self.setImage(UIImage(named: GSSettings.ui.navBarIcons.starUnselected)?.withRenderingMode(.alwaysTemplate), for: .normal)
+		self.setImage(UIImage(named: GSSettings.ui.navBarIcons.starSelected)?.withRenderingMode(.alwaysTemplate), for: .selected)
+		self.tintColor = GSSettings.ui.colors.tintColor
 	}
 	
 	override var intrinsicContentSize: CGSize {

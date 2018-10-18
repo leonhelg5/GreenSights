@@ -14,8 +14,6 @@ class GSAltDetailTableViewCell: UITableViewCell, ReusableView {
 	override init(style: UITableViewCell.CellStyle = .value1, reuseIdentifier: String?) {
 		super.init(style: .value1, reuseIdentifier: reuseIdentifier)
 		self.accessoryType = .disclosureIndicator
-//		self.textLabel?.font = GSSettings.UI.Fonts.helveticaRegular?.withSize(20)
-//		self.detailTextLabel?.font = GSSettings.UI.Fonts.helveticaRegularItalic?.withSize(16)
         layoutIfNeeded()
 	}
 	

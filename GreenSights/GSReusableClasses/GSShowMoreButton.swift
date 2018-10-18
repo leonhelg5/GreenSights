@@ -9,13 +9,14 @@
 import UIKit
 
 class GSShowMoreButton: UIButton {
-	let mySpotId: String = ""
+	
+    let representingSpotID: String = ""
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.setImage(UIImage(named: GSSettings.UI.otherIcons.dotsHorizontal)?.withRenderingMode(.alwaysTemplate), for: .normal)
-		self.setImage(UIImage(named: GSSettings.UI.otherIcons.dotsVertical)?.withRenderingMode(.alwaysTemplate), for: .selected)
-		self.tintColor = GSSettings.UI.Colors.tintColor
+		self.setImage(UIImage(named: GSSettings.ui.otherIcons.dotsHorizontal)?.withRenderingMode(.alwaysTemplate), for: .normal)
+		self.setImage(UIImage(named: GSSettings.ui.otherIcons.dotsVertical)?.withRenderingMode(.alwaysTemplate), for: .selected)
+		self.tintColor = GSSettings.ui.colors.tintColor
 	}
 	
 	override var intrinsicContentSize: CGSize {

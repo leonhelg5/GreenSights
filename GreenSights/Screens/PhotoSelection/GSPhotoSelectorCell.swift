@@ -19,7 +19,7 @@ class GSPhotoSelectorCell: UICollectionViewCell, ReusableView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = GSSettings.UI.Colors.backgroundWhite
+		self.backgroundColor = GSSettings.ui.colors.backgroundWhite
 		setupSubviews()
 		setupContstraints()
 	}

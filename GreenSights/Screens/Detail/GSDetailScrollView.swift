@@ -13,6 +13,7 @@ protocol GSDetailScrollViewDelegate: class {
 }
 
 class GSDetailScrollView: UIScrollView {
+	
 	//MARK: - Properties & Variables
 	weak var delegateDV: GSDetailScrollViewDelegate?
 	
@@ -22,17 +23,17 @@ class GSDetailScrollView: UIScrollView {
 	
 	let titleLabel: UILabel = {
 		let label       = UILabel()
-		label.font      = GSSettings.UI.Fonts.helveticaRegular?.withSize(28)
+		label.font      = GSSettings.ui.fonts.helveticaRegular?.withSize(28)
 		label.text      = "Linde"
-		label.textColor = GSSettings.UI.Colors.regularTextColor
+		label.textColor = GSSettings.ui.colors.regularTextColor
 		return label
 	}()
 	
 	let locationLabel: UILabel = {
 		let label           = UILabel()
-		label.font          = GSSettings.UI.Fonts.helveticaRegular?.withSize(16)
+		label.font          = GSSettings.ui.fonts.helveticaRegular?.withSize(16)
 		label.text          = "Obholz Frauenfeld"
-		label.textColor     = GSSettings.UI.Colors.tintColor
+		label.textColor     = GSSettings.ui.colors.tintColor
 		label.numberOfLines = 2
 		label.lineBreakMode = .byWordWrapping
 		label.isUserInteractionEnabled = true
@@ -41,9 +42,9 @@ class GSDetailScrollView: UIScrollView {
 	
 	let subtitleLabel: UILabel = {
 		let label       = UILabel()
-		label.font      = GSSettings.UI.Fonts.helveticaRegular?.withSize(18)
+		label.font      = GSSettings.ui.fonts.helveticaRegular?.withSize(18)
 		label.text      = "Traumhafte Aussicht - riesen Bänkli"
-		label.textColor = GSSettings.UI.Colors.midGray
+		label.textColor = GSSettings.ui.colors.midGray
 		label.numberOfLines = 2
 		return label
 	}()
@@ -51,7 +52,7 @@ class GSDetailScrollView: UIScrollView {
 	//TODO: size or type for this buton with mySize
 	let addFriendView: GSInviteAFriendView = {
 		let view = GSInviteAFriendView()
-		view.mySize = 50
+		view.radius = 50
 		return view
 	}()
 	
@@ -59,7 +60,7 @@ class GSDetailScrollView: UIScrollView {
 		// TODO: change name to more specific type (ImageView if is UIImageView, )
 		let view                = UIImageView()
 		view.clipsToBounds      = true
-		view.layer.cornerRadius = GSSettings.UI.Sizes.cornerRadius
+		view.layer.cornerRadius = GSSettings.ui.sizes.cornerRadius
 		view.contentMode        = .scaleAspectFill
 		view.backgroundColor    = UIColor.lightGray
 		view.isUserInteractionEnabled = true
@@ -75,7 +76,7 @@ class GSDetailScrollView: UIScrollView {
 	let thumbnailImageView: UIImageView = {
 		let imageview = UIImageView()
 		imageview.image = UIImage(named: "testbild")
-		imageview.layer.cornerRadius = GSSettings.UI.Sizes.cornerRadius
+		imageview.layer.cornerRadius = GSSettings.ui.sizes.cornerRadius
 		imageview.contentMode = .scaleAspectFill
 		imageview.clipsToBounds = true
 		return imageview
@@ -125,23 +126,23 @@ class GSDetailScrollView: UIScrollView {
 	}
 	
 	func setupContstraints() {
-		titleLabel.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: GSSettings.UI.Sizes.sidePadding, paddingLeading: GSSettings.UI.Sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.UI.Sizes.sidePadding, width: 0, height: 0)
+		titleLabel.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: GSSettings.ui.sizes.sidePadding, paddingLeading: GSSettings.ui.sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.ui.sizes.sidePadding, width: 0, height: 0)
 		
-		locationLabel.anchor(top: titleLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 0, paddingLeading: GSSettings.UI.Sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.UI.Sizes.sidePadding, width: 0, height: 0)
+		locationLabel.anchor(top: titleLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 0, paddingLeading: GSSettings.ui.sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.ui.sizes.sidePadding, width: 0, height: 0)
 		//TODO maybe set width
 		
-		subtitleLabel.anchor(top: locationLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 20, paddingLeading: GSSettings.UI.Sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.UI.Sizes.sidePadding, width: 0, height: 0)
+		subtitleLabel.anchor(top: locationLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 20, paddingLeading: GSSettings.ui.sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.ui.sizes.sidePadding, width: 0, height: 0)
 		
-		addFriendView.anchor(top: titleLabel.topAnchor, leading: nil, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: GSSettings.UI.Sizes.sidePadding, width: GSSettings.UI.Sizes.addFriendButtonSize, height: GSSettings.UI.Sizes.addFriendButtonSize)
+		addFriendView.anchor(top: titleLabel.topAnchor, leading: nil, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: GSSettings.ui.sizes.sidePadding, width: GSSettings.ui.sizes.addFriendButtonSize, height: GSSettings.ui.sizes.addFriendButtonSize)
 		
-		thumbnailImageView.anchor(top: subtitleLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 10, paddingLeading: GSSettings.UI.Sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.UI.Sizes.sidePadding, width: 0, height: 0)
+		thumbnailImageView.anchor(top: subtitleLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 10, paddingLeading: GSSettings.ui.sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.ui.sizes.sidePadding, width: 0, height: 0)
 		thumbnailImageView.heightAnchor.constraint(equalTo: thumbnailImageView.widthAnchor, multiplier: 9/16).isActive = true
 		
 		detailsTableView.anchor(top: thumbnailImageView.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 16, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: 0, height: 0)
 
-		fotosCollectionView.anchor(top: detailsTableView.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 20, paddingLeading: GSSettings.UI.Sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.UI.Sizes.sidePadding, width: 0, height: 300)
+		fotosCollectionView.anchor(top: detailsTableView.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 20, paddingLeading: GSSettings.ui.sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.ui.sizes.sidePadding, width: 0, height: 300)
 		
-		mapView.anchor(top: fotosCollectionView.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 50, paddingLeading: GSSettings.UI.Sizes.sidePadding, paddingBottom: GSSettings.UI.Sizes.sidePadding, paddingTrailing: GSSettings.UI.Sizes.sidePadding, width: 0, height: 80)
+		mapView.anchor(top: fotosCollectionView.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 50, paddingLeading: GSSettings.ui.sizes.sidePadding, paddingBottom: GSSettings.ui.sizes.sidePadding, paddingTrailing: GSSettings.ui.sizes.sidePadding, width: 0, height: 80)
 		
 		mapActivityIndicatorView.centerXAnchor.constraint(equalTo: mapView.centerXAnchor).isActive = true
 		mapActivityIndicatorView.centerYAnchor.constraint(equalTo: mapView.centerYAnchor).isActive = true

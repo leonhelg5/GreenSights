@@ -100,7 +100,7 @@
 		FEAFA61C216E9EAB0067350E /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		FEAFA61E216E9ED20067350E /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		FEB6031921721AAD00A2EF29 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; name = TODO; path = GreenSights/TODO; sourceTree = "<group>"; };
-		FEC7F3C221679C2400F9013E /* GSTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTabBarController.swift; sourceTree = "<group>"; };
+		FEC7F3C221679C2400F9013E /* GSTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTabBarController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		FEC7F3C62167AC6C00F9013E /* GSListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSListView.swift; sourceTree = "<group>"; };
 		FEC7F3C92167B19400F9013E /* GSBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSBaseViewController.swift; sourceTree = "<group>"; };
 		FEC7F3CB2167B21B00F9013E /* GSNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSNavigationController.swift; sourceTree = "<group>"; };

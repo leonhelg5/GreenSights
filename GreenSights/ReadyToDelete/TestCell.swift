@@ -12,8 +12,8 @@ class test: UITableViewCell, ReusableView {
 	
 	lazy var dotsButton: UIButton = {
 		let button = UIButton()
-		button.setImage(UIImage(named: GSSettings.UI.otherIcons.dotsHorizontal)?.withRenderingMode(.alwaysTemplate), for: .normal)
-		button.setImage(UIImage(named: GSSettings.UI.otherIcons.dotsVertical)?.withRenderingMode(.alwaysTemplate), for: .selected)
+		button.setImage(UIImage(named: GSSettings.ui.otherIcons.dotsHorizontal)?.withRenderingMode(.alwaysTemplate), for: .normal)
+		button.setImage(UIImage(named: GSSettings.ui.otherIcons.dotsVertical)?.withRenderingMode(.alwaysTemplate), for: .selected)
 		button.addTarget(self, action: #selector(seeMore), for: .touchUpInside)
 		button.fixHeightAndWidth(width: 28, height: 28)
 		button.tintColor = UIColor.gray//GSSettings.UI.Colors.tintColor
@@ -37,7 +37,7 @@ class test: UITableViewCell, ReusableView {
 	let titleLabel : UILabel = {
 		let label = UILabel()
 		label.text = "Titel Titel"
-		label.font = GSSettings.UI.Fonts.helveticaMedium?.withSize(22)
+		label.font = GSSettings.ui.fonts.helveticaMedium?.withSize(22)
 		label.textColor = UIColor.white
 		return label
 	}()
@@ -94,7 +94,7 @@ class test: UITableViewCell, ReusableView {
 		infoButton.anchor(top: thumbnailImageView.topAnchor, leading: nil, bottom: nil, trailing: thumbnailImageView.trailingAnchor, paddingTop: 8, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 8, width: 30, height: 30)
 		starButton.anchor(top: thumbnailImageView.topAnchor, leading: nil, bottom: nil, trailing: infoButton.leadingAnchor, paddingTop: 8, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 4, width: 30, height: 30)
 		
-		addFriendView.anchor(top: thumbnailImageView.bottomAnchor, leading: nil, bottom: nil, trailing: nil, paddingTop: -GSSettings.UI.Sizes.addFriendButtonSize/2 + 10, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: GSSettings.UI.Sizes.addFriendButtonSize, height: GSSettings.UI.Sizes.addFriendButtonSize)
+		addFriendView.anchor(top: thumbnailImageView.bottomAnchor, leading: nil, bottom: nil, trailing: nil, paddingTop: -GSSettings.ui.sizes.addFriendButtonSize/2 + 10, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: GSSettings.ui.sizes.addFriendButtonSize, height: GSSettings.ui.sizes.addFriendButtonSize)
 		addFriendView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true
 	}
 	
@@ -111,7 +111,7 @@ class test: UITableViewCell, ReusableView {
 	@objc func handleStarButton() {
 		starButton.isSelected.toggle()
 		if starButton.isSelected {
-			starButton.tintColor = GSSettings.UI.Colors.nightOrange
+			starButton.tintColor = GSSettings.ui.colors.nightOrange
 		} else {
 			starButton.tintColor = UIColor.white
 		}

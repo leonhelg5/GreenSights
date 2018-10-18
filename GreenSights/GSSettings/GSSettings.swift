@@ -10,16 +10,17 @@ import UIKit
 import Foundation
 
 struct GSSettings {
-	struct UI {
+    
+	struct ui {
 		
-		struct Sizes {
+		struct sizes {
 			static let sidePadding: CGFloat = 16
 			static let cornerRadius: CGFloat = 8
 			static let addFriendButtonSize: CGFloat = 60
 			static let aspectRatio: CGFloat = 9/16
 		}
 		
-		struct Colors {
+		struct colors {
 			static let regularTextColor         = UIColor.rgb(23, 23, 23, 1)
 			static let lightGray                = UIColor.lightGray
 			static let midGray                  = UIColor.gray
@@ -35,8 +36,8 @@ struct GSSettings {
 		}
 		
 		struct tabbarItems {
-			static let tabbarBackground         = Colors.elementBackgroundColor
-			static let selectedItemsTintColor   = Colors.tintColor
+			static let tabbarBackground         = colors.elementBackgroundColor
+			static let selectedItemsTintColor   = colors.tintColor
 			static let unselectedItemsTintColor = UIColor.black//UIColor.darkGray
 			
 			static let homeSelected     = "home5_selected"
@@ -50,7 +51,7 @@ struct GSSettings {
 			static let profileUnselected    = "profile_unselected"
 		}
 		
-		struct NavBarIcons {
+		struct navBarIcons {
 			static let starSelected     = "star_selected"
 			static let starUnselected   = "star_unselected"
 			static let infoSelected     = "info_selected"
@@ -64,12 +65,11 @@ struct GSSettings {
 			static let addFriend 		= "addFriend"
 		}
 		
-		struct Animations {
-			static let mySwipeDuration = TimeInterval(0.25)
+		struct animations {
+			static let swipeDuration = TimeInterval(0.25)
 		}
 		
-		struct Fonts {
-			
+		struct fonts {
 			static let helveticaThin    = UIFont(name: "HelveticaNeue-Thin", size: 24)
 			static let helveticaLight   = UIFont(name: "HelveticaNeue-Light", size: 24)
 			static let helveticaRegular = UIFont(name: "HelveticaNeue", size: 24)

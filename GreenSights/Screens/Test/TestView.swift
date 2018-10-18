@@ -9,20 +9,21 @@
 import UIKit
 
 class TestView: UIView {
+    
 	let BIGaddFriendButton: UIButton = {
 		let button = UIButton()
-		button.backgroundColor = GSSettings.UI.Colors.tintColor
+		button.backgroundColor = GSSettings.ui.colors.tintColor
 		button.setImage(UIImage(named: "plusGreen2")?.withRenderingMode(.alwaysOriginal), for: .normal)
 		button.imageView?.contentMode = .scaleAspectFit
-		button.layer.cornerRadius = GSSettings.UI.Sizes.cornerRadius
+		button.layer.cornerRadius = GSSettings.ui.sizes.cornerRadius
 		return button
 	}()
 	
 	let switcher: UISwitch = {
 		let switcher = UISwitch()
-		switcher.tintColor      = GSSettings.UI.Colors.tintColor.withAlphaComponent(0.6)
-		switcher.onTintColor    = GSSettings.UI.Colors.tintColor.withAlphaComponent(0.6)
-		switcher.thumbTintColor = GSSettings.UI.Colors.tintColor.withAlphaComponent(0.6)
+		switcher.tintColor      = GSSettings.ui.colors.tintColor.withAlphaComponent(0.6)
+		switcher.onTintColor    = GSSettings.ui.colors.tintColor.withAlphaComponent(0.6)
+		switcher.thumbTintColor = GSSettings.ui.colors.tintColor.withAlphaComponent(0.6)
 		switcher.isOn           = false
 		return switcher
 	}()

@@ -9,6 +9,7 @@
 import UIKit
 
 class GSListViewController: GSBaseViewController {
+    
 	let containerView = GSListView()
 	
 	override func viewDidLoad() {

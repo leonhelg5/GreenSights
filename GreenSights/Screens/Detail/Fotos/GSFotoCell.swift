@@ -9,18 +9,19 @@
 import UIKit
 
 class GSFotoCell: UICollectionViewCell, ReusableView {
+    
 	let fotoView: UIImageView = {
 		let imageview = UIImageView()
 		imageview.image = UIImage(named: "testbild")
 		imageview.contentMode = .scaleAspectFill
 		imageview.clipsToBounds = true
-		imageview.layer.cornerRadius = GSSettings.UI.Sizes.cornerRadius
+		imageview.layer.cornerRadius = GSSettings.ui.sizes.cornerRadius
 		return imageview
 	}()
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = GSSettings.UI.Colors.backgroundWhite
+		self.backgroundColor = GSSettings.ui.colors.backgroundWhite
 		setupSubviews()
 		setupContstraints()
 	}

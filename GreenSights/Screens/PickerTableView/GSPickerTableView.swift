@@ -9,6 +9,7 @@
 import UIKit
 
 class GSPickerTableView: UIView {
+    
 	var data = [String]()
 	
 	lazy var tableView: UITableView = {
@@ -16,7 +17,7 @@ class GSPickerTableView: UIView {
 		tableview.dataSource = self
 		tableview.delegate = self
 		//tableview.separatorInset = UIEdgeInsets.zero
-		tableview.backgroundColor = GSSettings.UI.Colors.backgroundWhite
+		tableview.backgroundColor = GSSettings.ui.colors.backgroundWhite
 		tableview.rowHeight = 45
 		//tableview.register(GSDetailTableViewCell.self, forCellReuseIdentifier: GSDetailTableViewCell.reuseIdentifier)
 		return tableview

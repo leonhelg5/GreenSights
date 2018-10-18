@@ -9,6 +9,7 @@
 import UIKit
 
 class GSPhotoSelectorController: GSBaseViewController {
+    
 	let containerView = GSPhotoSelectorCollectionView()
 	
 	override func viewDidLoad() {

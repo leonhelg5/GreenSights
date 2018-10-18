@@ -9,7 +9,7 @@
 import UIKit
 
 class GSTabBarController: UITabBarController, UITabBarControllerDelegate {
-    
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.delegate = self
@@ -17,7 +17,6 @@ class GSTabBarController: UITabBarController, UITabBarControllerDelegate {
 		setupViewControllers()
 		addTopBorder()
 		
-        self.tabBar.backgroundColor = UIColor.red
 		for vc in self.viewControllers! {
 			vc.tabBarItem.title = nil
 			vc.tabBarItem.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -6, right: 0)
@@ -25,13 +24,12 @@ class GSTabBarController: UITabBarController, UITabBarControllerDelegate {
 	}
 	
 	func setupDefaultProperties() {
-		self.view.backgroundColor = GSSettings.UI.Colors.elementBackgroundColor
+		self.view.backgroundColor = GSSettings.ui.colors.elementBackgroundColor
 		self.tabBar.autoresizesSubviews = true
 		self.tabBar.clipsToBounds = true
 		self.tabBar.isTranslucent = false
-		self.tabBar.tintColor = GSSettings.UI.tabbarItems.selectedItemsTintColor
-		self.tabBar.unselectedItemTintColor = GSSettings.UI.tabbarItems.unselectedItemsTintColor
-		//        self.tabBarItem.imageInsets = UIEdgeInsets(top: -16, left: 0, bottom: 16, right: 0)
+		self.tabBar.tintColor = GSSettings.ui.tabbarItems.selectedItemsTintColor
+		self.tabBar.unselectedItemTintColor = GSSettings.ui.tabbarItems.unselectedItemsTintColor
 	}
 	
 	//doesnt work
@@ -44,42 +42,32 @@ class GSTabBarController: UITabBarController, UITabBarControllerDelegate {
 	
 	func setupViewControllers() {
 		//Icons
-		let homeSelected        = UIImage(named: GSSettings.UI.tabbarItems.homeSelected)
-		let homeUnselected      = UIImage(named: GSSettings.UI.tabbarItems.homeUnselected)
-		let searchSelected      = UIImage(named: GSSettings.UI.tabbarItems.searchSelected)
-		let searchUnselected    = UIImage(named: GSSettings.UI.tabbarItems.searchUnselected)
-		let plusIcon            = UIImage(named: GSSettings.UI.tabbarItems.plusIcon)
-		let mapSelected         = UIImage(named: GSSettings.UI.tabbarItems.mapSelected)
-		let mapUnselected       = UIImage(named: GSSettings.UI.tabbarItems.mapUnselected)
-		let profileSelected     = UIImage(named: GSSettings.UI.tabbarItems.profileSelected)
-		let profileUnselected   = UIImage(named: GSSettings.UI.tabbarItems.profileUnselected)
+		let homeSelected        = UIImage(named: GSSettings.ui.tabbarItems.homeSelected)
+		let homeUnselected      = UIImage(named: GSSettings.ui.tabbarItems.homeUnselected)
+		let searchSelected      = UIImage(named: GSSettings.ui.tabbarItems.searchSelected)
+		let searchUnselected    = UIImage(named: GSSettings.ui.tabbarItems.searchUnselected)
+		let plusIcon            = UIImage(named: GSSettings.ui.tabbarItems.plusIcon)
+		let mapSelected         = UIImage(named: GSSettings.ui.tabbarItems.mapSelected)
+		let mapUnselected       = UIImage(named: GSSettings.ui.tabbarItems.mapUnselected)
+		let profileSelected     = UIImage(named: GSSettings.ui.tabbarItems.profileSelected)
+		let profileUnselected   = UIImage(named: GSSettings.ui.tabbarItems.profileUnselected)
 		
 		
-		//list
-		let listViewController = GSListViewController()
-		let listNavigationController = GSNavigationController(rootViewController: listViewController)
-		listNavigationController.tabBarItem.image = homeUnselected
-		listNavigationController.tabBarItem.selectedImage = homeSelected
-		listViewController.title = "Sights"
-		listNavigationController.tabBarItem.title = ""
-        
-        let searchNavigationController = templateNavController(unselectedImage: searchUnselected!, selectedImage: searchSelected!, rootViewController: TestVC())
+		let listNavigationController 	= templateNavController(unselectedImage: homeUnselected!, selectedImage: homeSelected!, rootViewController: GSListViewController())
+		let searchNavigationController 	= templateNavController(unselectedImage: searchUnselected!, selectedImage: searchSelected!, rootViewController: TestVC())
 		let addSpotNavigationController = templateNavController(unselectedImage: plusIcon!, selectedImage: plusIcon!)
-        let mapNavigationController = templateNavController(unselectedImage: mapUnselected!, selectedImage: mapSelected!, rootViewController: TestVC())
-        let cvNavigationController = templateNavController(unselectedImage: profileUnselected!, selectedImage: profileSelected!, rootViewController: GSCollectionOverviewController())
-
-        viewControllers = [listNavigationController, searchNavigationController , addSpotNavigationController, mapNavigationController, cvNavigationController]
+		let mapNavigationController 	= templateNavController(unselectedImage: mapUnselected!, selectedImage: mapSelected!, rootViewController: TestVC())
+		let cvNavigationController 		= templateNavController(unselectedImage: profileUnselected!, selectedImage: profileSelected!, rootViewController: GSCollectionOverviewController())
 		
+		viewControllers = [listNavigationController, searchNavigationController , addSpotNavigationController, mapNavigationController, cvNavigationController]
 	}
 	
 	func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
 		let index = viewControllers?.index(of: viewController)
 		if index == 2 {
-			
 			let photoSelectorController = GSPhotoSelectorController()
 			let navController = GSNavigationController(rootViewController: photoSelectorController)
 			present(navController, animated: true, completion: nil)
-			
 			return false
 		}
 		return true

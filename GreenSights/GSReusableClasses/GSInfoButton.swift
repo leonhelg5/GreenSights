@@ -9,13 +9,14 @@
 import UIKit
 
 class GSInfoButton: UIButton {
-	let mySpotId: String = ""
+	
+    let representingSpotID: String = ""
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.setImage(UIImage(named: GSSettings.UI.NavBarIcons.infoUnselected)?.withRenderingMode(.alwaysTemplate), for: .normal)
-		self.setImage(UIImage(named: GSSettings.UI.NavBarIcons.infoSelected)?.withRenderingMode(.alwaysTemplate), for: .selected)
-		self.tintColor = GSSettings.UI.Colors.tintColor
+		self.setImage(UIImage(named: GSSettings.ui.navBarIcons.infoUnselected)?.withRenderingMode(.alwaysTemplate), for: .normal)
+		self.setImage(UIImage(named: GSSettings.ui.navBarIcons.infoSelected)?.withRenderingMode(.alwaysTemplate), for: .selected)
+		self.tintColor = GSSettings.ui.colors.tintColor
 		self.contentMode = .scaleAspectFit
 	}
 	

@@ -14,7 +14,7 @@ class GSPhotoSelectorCollectionView: UIView {
 	var screenWidth = UIScreen.main.bounds.width
 	var itemSize = CGSize()
 	var numberOfItemsPerRow: CGFloat = 4
-	var aspectRatio = GSSettings.UI.Sizes.aspectRatio
+	var aspectRatio = GSSettings.ui.sizes.aspectRatio
 	
 	var selectedImage: UIImage?
 	var images = [UIImage]()
@@ -24,7 +24,7 @@ class GSPhotoSelectorCollectionView: UIView {
 	
 	lazy var collectionView: UICollectionView = {
 		let collectionview = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-		collectionview.backgroundColor = GSSettings.UI.Colors.backgroundWhite
+		collectionview.backgroundColor = GSSettings.ui.colors.backgroundWhite
 		collectionview.delegate = self
 		collectionview.dataSource = self
 		collectionview.register(GSPhotoSelectorCell.self, forCellWithReuseIdentifier: GSPhotoSelectorCell.reuseIdentifier)
@@ -42,7 +42,7 @@ class GSPhotoSelectorCollectionView: UIView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = GSSettings.UI.Colors.backgroundWhite
+		self.backgroundColor = GSSettings.ui.colors.backgroundWhite
 	}
 	
 	func parentVCDidAppear() {

@@ -10,6 +10,7 @@ import UIKit
 import MapKit
 
 class GSDetailViewController: GSBaseViewController {
+	
 	let containerScrollView = GSDetailScrollView()
 	
 	let provLocation = CLLocationCoordinate2D(latitude: 47.553217, longitude: 8.891721)
@@ -23,7 +24,7 @@ class GSDetailViewController: GSBaseViewController {
 	lazy var infoButtonNavItem: GSInfoButton = {
 		let button = GSInfoButton()
 		button.addTarget(self, action: #selector(handleInfoButton), for: .touchUpInside)
-		button.tintColor = GSSettings.UI.Colors.tintColor
+		button.tintColor = GSSettings.ui.colors.tintColor
 		return button
 	}()
 	

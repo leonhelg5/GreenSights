@@ -13,15 +13,16 @@ protocol GSFotosViewDelegate: class {
 }
 
 class GSSmallFotosGaleryCollectionView: UIView, UICollectionViewDelegateFlowLayout {
+    
 	weak var delegateFV: GSFotosViewDelegate?
 	
 	let paddingBetweenLabelAndCV: CGFloat = 4
 	
 	let fotosLabel: UILabel = {
 		let label       = UILabel()
-		label.font      = GSSettings.UI.Fonts.helveticaRegular?.withSize(20)
+		label.font      = GSSettings.ui.fonts.helveticaRegular?.withSize(20)
 		label.text      = "Fotos:"
-		label.textColor = GSSettings.UI.Colors.regularTextColor
+		label.textColor = GSSettings.ui.colors.regularTextColor
 		label.numberOfLines = 1
 		return label
 	}()
@@ -31,7 +32,7 @@ class GSSmallFotosGaleryCollectionView: UIView, UICollectionViewDelegateFlowLayo
 	lazy var collectionView: UICollectionView = {
 		let collectionview = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
 		collectionview.showsHorizontalScrollIndicator   = false
-		collectionview.backgroundColor                  = GSSettings.UI.Colors.backgroundWhite
+		collectionview.backgroundColor                  = GSSettings.ui.colors.backgroundWhite
 		collectionview.bounces                          = true
 		collectionview.allowsSelection                  = false
 		collectionview.delegate                         = self

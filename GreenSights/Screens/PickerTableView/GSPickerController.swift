@@ -9,6 +9,7 @@
 import UIKit
 
 class GSPickerController: GSBaseViewController {
+    
 	let containerView = TestView()
 	
 	override func viewDidLoad() {

@@ -14,6 +14,7 @@ protocol listViewDelegate: class {
 }
 
 class GSListView: UIView {
+    
 	weak var delegate: listViewDelegate?
 	var listSegmentController = GSSegmentController()
 	

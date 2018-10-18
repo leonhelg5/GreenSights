@@ -20,7 +20,6 @@ struct Datasource {
     var type: cellType
 }
 
-//ELENA
 class GSCollectionView: UIView {
     
     let cellId = "cellId" //TODO

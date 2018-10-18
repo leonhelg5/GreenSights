@@ -19,12 +19,12 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = GSSettings.UI.Colors.backgroundWhite
+		self.backgroundColor = GSSettings.ui.colors.backgroundWhite
 		
 		setupSubviews()
 		setupContstraints()
-		self.layer.cornerRadius = GSSettings.UI.Sizes.cornerRadius
-		photoImageView.layer.cornerRadius = GSSettings.UI.Sizes.cornerRadius
+		self.layer.cornerRadius = GSSettings.ui.sizes.cornerRadius
+		photoImageView.layer.cornerRadius = GSSettings.ui.sizes.cornerRadius
 	}
 	
 	func setupSubviews() {

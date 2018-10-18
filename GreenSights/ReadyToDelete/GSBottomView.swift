@@ -35,7 +35,7 @@ class GSBottomView: UIView {
 	func setupConstraints() {
 		votingStackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: 0, height: 0)
 		
-		addFriendView.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: GSSettings.UI.Sizes.addFriendButtonSize, height: GSSettings.UI.Sizes.addFriendButtonSize)
+		addFriendView.anchor(top: nil, leading: nil, bottom: nil, trailing: nil, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: GSSettings.ui.sizes.addFriendButtonSize, height: GSSettings.ui.sizes.addFriendButtonSize)
 		addFriendView.translatesAutoresizingMaskIntoConstraints = false
 		addFriendView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -8).isActive = true
 		addFriendView.centerXAnchor.constraint(equalTo: centerXAnchor, constant: 0).isActive = true

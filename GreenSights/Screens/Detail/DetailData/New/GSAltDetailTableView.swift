@@ -16,8 +16,8 @@ protocol altDetailsTableViewDelegate: class {
 class GSAltDetailTableView: UIView {
 	
 	weak var delegate: altDetailsTableViewDelegate?
-	var titles = ["Sitzplätze", "Regensicher", "Lautstärkentoleranz", "Polizeipräsenz", "Anwohner", "Passanten", "Erreichbarkeit"]
-	var values = ["13", "Ja", "Keine", "Keine", "Mittel", "Wenig", "Gut"]
+	let titles = ["Sitzplätze", "Regensicher", "Lautstärkentoleranz", "Polizeipräsenz", "Anwohner", "Passanten", "Erreichbarkeit"]
+	let values = ["13", "Ja", "Keine", "Keine", "Mittel", "Wenig", "Gut"]
 	
 	let headerId = "headerId"
 	let footerId = "footerId"

@@ -16,8 +16,8 @@ class GSSegmentController: UIView {
 	weak var delegate: segmentDelegate?
 	
 	//MARK: - Variables & Properties
-	let myBackColor = UIColor.white//GSSettings.UI.Colors.elementBackgroundColor
-	let myTintColor = GSSettings.UI.Colors.tintColor
+	let myBackgroundColor = UIColor.white//GSSettings.UI.Colors.elementBackgroundColor
+	let myTintColor       = GSSettings.ui.colors.tintColor
 	
 	var selectedSegment = 0
 	var screenWidth:CGFloat = 0
@@ -43,7 +43,7 @@ class GSSegmentController: UIView {
 	var selectionViewLeftConstraint = NSLayoutConstraint()
 	lazy var selectionView: UIView = {
 		let view = UIView()
-		view.backgroundColor = myTintColor
+		view.backgroundColor = tintColor
 		return view
 	}()
 	
@@ -54,7 +54,7 @@ class GSSegmentController: UIView {
 		super.init(frame: frame)
 		screenWidth = UIScreen.main.bounds.width
 		sectionWidth = screenWidth
-		self.backgroundColor = myBackColor
+		self.backgroundColor = backgroundColor
 	}
 	
 	convenience init(segments: [String]) {
@@ -107,7 +107,7 @@ class GSSegmentController: UIView {
 		let constant = CGFloat(futureSegment) * (self.screenWidth / self.numberOfSections)
 		self.selectionViewLeftConstraint.constant = constant
 		delegate?.segmentSelected(previous: selectedSegment, future: futureSegment)
-		UIView.animate(withDuration: GSSettings.UI.Animations.mySwipeDuration, delay: 0, options: .curveEaseOut, animations: {
+		UIView.animate(withDuration: GSSettings.ui.animations.swipeDuration, delay: 0, options: .curveEaseOut, animations: {
 			self.layoutIfNeeded()
 		})
 		selectedSegment = futureSegment
@@ -131,8 +131,8 @@ class segStackViewButton: UIButton {
 		self.segmentID = segment
 		self.backgroundColor = UIColor.white
 		self.setTitle(labelText, for: .normal)
-		self.setTitleColor(GSSettings.UI.Colors.regularTextColor, for: .normal)
-		self.titleLabel?.font = GSSettings.UI.Fonts.helveticaLight?.withSize(22)
+		self.setTitleColor(GSSettings.ui.colors.regularTextColor, for: .normal)
+		self.titleLabel?.font = GSSettings.ui.fonts.helveticaLight?.withSize(22)
 		self.titleLabel?.textAlignment = .center
 		self.tintColor = UIColor.black
 	}

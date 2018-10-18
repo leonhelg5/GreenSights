@@ -9,6 +9,7 @@
 import UIKit
 
 class TestVC: GSBaseViewController {
+    
 	let containerView = TestView()
 	
 	override func viewDidLoad() {

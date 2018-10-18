@@ -20,9 +20,9 @@ extension UINavigationController {
 	func setNavigationBarDefault() {
 		self.navigationBar.isTranslucent        = false
 		self.navigationBar.prefersLargeTitles   = false
-		self.navigationBar.barTintColor       = GSSettings.UI.Colors.elementBackgroundColor
-		self.navigationBar.backgroundColor    = GSSettings.UI.Colors.elementBackgroundColor
-		self.navigationBar.tintColor          = GSSettings.UI.Colors.tintColor
-		self.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: GSSettings.UI.Fonts.helveticaMedium!.withSize(22)]
+		self.navigationBar.barTintColor       = GSSettings.ui.colors.elementBackgroundColor
+		self.navigationBar.backgroundColor    = GSSettings.ui.colors.elementBackgroundColor
+		self.navigationBar.tintColor          = GSSettings.ui.colors.tintColor
+		self.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: GSSettings.ui.fonts.helveticaMedium!.withSize(22)]
 	}
 }

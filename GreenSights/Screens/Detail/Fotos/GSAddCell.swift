@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//TODO: remove this class
 class GSAddCell: UICollectionViewCell, ReusableView {
 	
 	let fotoView: UIImageView = {
@@ -16,13 +16,13 @@ class GSAddCell: UICollectionViewCell, ReusableView {
 		imageview.image = image
 		imageview.contentMode = .scaleAspectFill
 		imageview.clipsToBounds = true
-		imageview.layer.cornerRadius = GSSettings.UI.Sizes.cornerRadius
+		imageview.layer.cornerRadius = GSSettings.ui.sizes.cornerRadius
 		return imageview
 	}()
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = GSSettings.UI.Colors.backgroundWhite
+		self.backgroundColor = GSSettings.ui.colors.backgroundWhite
 		setupSubviews()
 		setupContstraints()
 	}

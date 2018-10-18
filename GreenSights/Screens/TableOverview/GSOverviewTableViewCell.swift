@@ -36,7 +36,7 @@ class GSOverviewTableViewCell: UITableViewCell, ReusableView {
 	let titleLabel : UILabel = {
 		let label = UILabel()
 		label.text = "Brainded"
-		label.font = GSSettings.UI.Fonts.helveticaMedium?.withSize(22)
+		label.font = GSSettings.ui.fonts.helveticaMedium?.withSize(22)
 		label.textColor = UIColor.white
 		return label
 	}()
@@ -44,7 +44,7 @@ class GSOverviewTableViewCell: UITableViewCell, ReusableView {
 	let descriptionLabel : UILabel = {
 		let label = UILabel()
 		label.text = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum."
-		label.font = GSSettings.UI.Fonts.helveticaRegular?.withSize(18)
+		label.font = GSSettings.ui.fonts.helveticaRegular?.withSize(18)
 		label.textColor = UIColor.white
 		label.numberOfLines = 0
 		return label
@@ -90,7 +90,7 @@ class GSOverviewTableViewCell: UITableViewCell, ReusableView {
 	
 	func setupConstraints() {
 		let paddingBottomTop: CGFloat = 10
-		let friendButtonPadding = -GSSettings.UI.Sizes.addFriendButtonSize/2 + 10
+		let friendButtonPadding = -GSSettings.ui.sizes.addFriendButtonSize/2 + 10
 		
 		dotsButton.anchor(top: contentView.topAnchor, leading: nil, bottom: nil, trailing: contentView.trailingAnchor, paddingTop: paddingBottomTop, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 16, width: 0, height: 0)
 		
@@ -117,7 +117,7 @@ class GSOverviewTableViewCell: UITableViewCell, ReusableView {
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		//contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0))
-		thumbnailImageView.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: GSSettings.UI.Sizes.cornerRadius)
+		thumbnailImageView.roundCorners(corners: [.topLeft, .topRight, .bottomLeft, .bottomRight], radius: GSSettings.ui.sizes.cornerRadius)
 		
 	}
 	
@@ -134,7 +134,7 @@ class GSOverviewTableViewCell: UITableViewCell, ReusableView {
 	@objc func handleStarButton() {
 		starButton.isSelected.toggle()
 		if starButton.isSelected {
-			starButton.tintColor = GSSettings.UI.Colors.nightOrange
+			starButton.tintColor = GSSettings.ui.colors.nightOrange
 		} else {
 			starButton.tintColor = UIColor.white
 		}

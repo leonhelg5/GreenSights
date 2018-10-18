@@ -13,7 +13,7 @@ class GSVotingStackView: UIStackView {
 	let arrowUpButton: UIButton = {
 		let button = UIButton()
 		button.backgroundColor = .clear
-		button.tintColor = GSSettings.UI.Colors.tintColor
+		button.tintColor = GSSettings.ui.colors.tintColor
 		button.imageView?.contentMode = .scaleAspectFit
 		button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
 		button.clipsToBounds = true
@@ -23,7 +23,7 @@ class GSVotingStackView: UIStackView {
 	let arrowDownButton: UIButton = {
 		let button = UIButton()
 		button.backgroundColor = .clear
-		button.tintColor = GSSettings.UI.Colors.tintColor
+		button.tintColor = GSSettings.ui.colors.tintColor
 		button.imageView?.contentMode = .scaleAspectFit
 		button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
 		button.clipsToBounds = true
@@ -33,8 +33,8 @@ class GSVotingStackView: UIStackView {
 	let percentageLabel: UILabel = {
 		let label = UILabel()
 		label.text = "80%"
-		label.textColor = GSSettings.UI.Colors.regularTextColor
-		label.font = GSSettings.UI.Fonts.helveticaRegular?.withSize(18)
+		label.textColor = GSSettings.ui.colors.regularTextColor
+		label.font = GSSettings.ui.fonts.helveticaRegular?.withSize(18)
 		label.clipsToBounds = false
 		return label
 	}()

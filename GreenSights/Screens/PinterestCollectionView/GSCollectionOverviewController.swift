@@ -9,6 +9,7 @@
 import UIKit
 
 class GSCollectionOverviewController: GSBaseViewController {
+
     let containerView = GSCollectionView()
     
     override func viewDidLoad() {
