@@ -9,6 +9,7 @@
 import UIKit
 
 class GSInviteAFriendView: UIView {
+    
 	var mySize: CGFloat = GSSettings.UI.Sizes.addFriendButtonSize
 	
 	let addFriendButton: UIButton = {

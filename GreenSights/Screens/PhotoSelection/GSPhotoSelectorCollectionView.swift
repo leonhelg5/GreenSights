@@ -24,7 +24,7 @@ class GSPhotoSelectorCollectionView: UIView {
 	
 	lazy var collectionView: UICollectionView = {
 		let collectionview = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
-		collectionview.backgroundColor                  = GSSettings.UI.Colors.backgroundWhite
+		collectionview.backgroundColor = GSSettings.UI.Colors.backgroundWhite
 		collectionview.delegate = self
 		collectionview.dataSource = self
 		collectionview.register(GSPhotoSelectorCell.self, forCellWithReuseIdentifier: GSPhotoSelectorCell.reuseIdentifier)
@@ -36,7 +36,7 @@ class GSPhotoSelectorCollectionView: UIView {
 		let layout = UICollectionViewFlowLayout()
 		layout.minimumInteritemSpacing = 1
 		layout.minimumLineSpacing = 1
-		layout.sectionInset = UIEdgeInsets(top: 1, left: 0, bottom: 0, right: 0) //space between header and cells
+		layout.sectionInset = UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0) //space between header and cells
 		return layout
 	}()
 	
@@ -81,13 +81,21 @@ class GSPhotoSelectorCollectionView: UIView {
 	fileprivate func fetchAllPhotos() {
 		let allPhotos = PHAsset.fetchAssets(with: .image, options: getAssetsFetchOptions())
 		
-		DispatchQueue.global(qos: .background).async {
-			allPhotos.enumerateObjects({ (asset, count, stop) in
+		DispatchQueue.global(qos: .background).async { [weak self] in
+            guard let self = self else {
+                return
+            }
+			allPhotos.enumerateObjects({ [weak self] (asset, count, stop) in
+                guard let self = self else {
+                    return
+                }
 				let imageManager = PHImageManager.default()
 				let options = PHImageRequestOptions()
 				options.isSynchronous = true
-				imageManager.requestImage(for: asset, targetSize: self.itemSize, contentMode: .aspectFit, options: options, resultHandler: { (image, info) in
-					
+				imageManager.requestImage(for: asset, targetSize: self.itemSize, contentMode: .aspectFit, options: options, resultHandler: { [weak self] (image, info) in
+                    guard let self = self else {
+                        return
+                    }
 					if let image = image {
 						self.images.append(image)
 						self.assets.append(asset)

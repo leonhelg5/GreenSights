@@ -14,11 +14,13 @@ protocol altDetailsTableViewDelegate: class {
 }
 
 class GSAltDetailTableView: UIView {
+	
 	weak var delegate: altDetailsTableViewDelegate?
 	var titles = ["Sitzplätze", "Regensicher", "Lautstärkentoleranz", "Polizeipräsenz", "Anwohner", "Passanten", "Erreichbarkeit"]
 	var values = ["13", "Ja", "Keine", "Keine", "Mittel", "Wenig", "Gut"]
-	var headerId = "headerId"
-	var footerId = "footerId"
+	
+	let headerId = "headerId"
+	let footerId = "footerId"
 	
 	//Static values:
 	let rowHeight: CGFloat = 44
@@ -67,6 +69,7 @@ class GSAltDetailTableView: UIView {
 	func setupSubviews() {
 		addSubview(tableView)
 	}
+	
 	func setupContstraints() {
 		tableView.fillSuperview(onlySafeArea: false)
 	}
@@ -101,7 +104,7 @@ class GSAltDetailTableView: UIView {
 	}
 	
 	//TODO: create variable for indexpath instead of function
-	func createIndexPath() -> [IndexPath]{
+	func createIndexPath() -> [IndexPath] {
 		var indexPaths = [IndexPath]()
 		for row in numberOfRowsWhenUnexpanded..<titles.count {
 			let indexPath = IndexPath(row: row, section: 0)
@@ -123,6 +126,7 @@ extension GSAltDetailTableView: UITableViewDelegate {
 }
 
 extension GSAltDetailTableView: UITableViewDataSource {
+	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
 	}

@@ -9,6 +9,7 @@
 import UIKit
 
 class GSTabBarController: UITabBarController, UITabBarControllerDelegate {
+    
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.delegate = self
@@ -16,6 +17,7 @@ class GSTabBarController: UITabBarController, UITabBarControllerDelegate {
 		setupViewControllers()
 		addTopBorder()
 		
+        self.tabBar.backgroundColor = UIColor.red
 		for vc in self.viewControllers! {
 			vc.tabBarItem.title = nil
 			vc.tabBarItem.imageInsets = UIEdgeInsets(top: 4, left: 0, bottom: -6, right: 0)
@@ -60,19 +62,12 @@ class GSTabBarController: UITabBarController, UITabBarControllerDelegate {
 		listNavigationController.tabBarItem.selectedImage = homeSelected
 		listViewController.title = "Sights"
 		listNavigationController.tabBarItem.title = ""
-
         
         let searchNavigationController = templateNavController(unselectedImage: searchUnselected!, selectedImage: searchSelected!, rootViewController: TestVC())
-		
 		let addSpotNavigationController = templateNavController(unselectedImage: plusIcon!, selectedImage: plusIcon!)
-		
-		//Map...
         let mapNavigationController = templateNavController(unselectedImage: mapUnselected!, selectedImage: mapSelected!, rootViewController: TestVC())
-      
-        
         let cvNavigationController = templateNavController(unselectedImage: profileUnselected!, selectedImage: profileSelected!, rootViewController: GSCollectionOverviewController())
-		
-		
+
         viewControllers = [listNavigationController, searchNavigationController , addSpotNavigationController, mapNavigationController, cvNavigationController]
 		
 	}

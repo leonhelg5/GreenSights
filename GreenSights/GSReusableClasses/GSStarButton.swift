@@ -9,6 +9,7 @@
 import UIKit
 
 class GSStarButton: UIButton {
+    
 	let mySpotId: String = ""
 	
 	override init(frame: CGRect) {

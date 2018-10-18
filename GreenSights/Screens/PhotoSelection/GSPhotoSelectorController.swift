@@ -19,7 +19,8 @@ class GSPhotoSelectorController: GSBaseViewController {
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
-		containerView.parentVCDidAppear()
+        super.viewDidAppear(animated)
+        containerView.parentVCDidAppear()
 	}
 	
 	func setupSubview() {

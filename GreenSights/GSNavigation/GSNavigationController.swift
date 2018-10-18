@@ -16,6 +16,7 @@ class GSNavigationController: UINavigationController {
 }
 
 extension UINavigationController {
+    
 	func setNavigationBarDefault() {
 		self.navigationBar.isTranslucent        = false
 		self.navigationBar.prefersLargeTitles   = false

@@ -52,16 +52,13 @@ extension GSPickerTableView: UITableViewDelegate {
 }
 
 extension GSPickerTableView: UITableViewDataSource {
+    
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
 			return data.count
-
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		//TODO: switch index path
 		let cell = self.tableView.dequeueReusableCell(withIdentifier: GSAltDetailTableViewCell.reuseIdentifier, for: indexPath) as! GSAltDetailTableViewCell
-		
 		return cell
 	}
 }

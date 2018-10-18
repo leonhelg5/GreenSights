@@ -48,6 +48,7 @@ class GSDetailScrollView: UIScrollView {
 		return label
 	}()
 	
+	//TODO: size or type for this buton with mySize
 	let addFriendView: GSInviteAFriendView = {
 		let view = GSInviteAFriendView()
 		view.mySize = 50
@@ -55,6 +56,7 @@ class GSDetailScrollView: UIScrollView {
 	}()
 	
 	let mapView: UIImageView = {
+		// TODO: change name to more specific type (ImageView if is UIImageView, )
 		let view                = UIImageView()
 		view.clipsToBounds      = true
 		view.layer.cornerRadius = GSSettings.UI.Sizes.cornerRadius
@@ -117,6 +119,7 @@ class GSDetailScrollView: UIScrollView {
 		containerView.addSubview(mapActivityIndicatorView)
 		
 		detailsTableView.delegate = self
+		//TODO: naming: detailsTableViewHeightConstraint
 		heightOfDetailsTableView = detailsTableView.heightAnchor.constraint(equalToConstant: calcHeightOfDetailTableView())
 		heightOfDetailsTableView.isActive = true
 	}
@@ -157,7 +160,7 @@ class GSDetailScrollView: UIScrollView {
 		delegateDV?.viewDidLayoutSubviews()
 	}
 	
-	func calcHeightOfDetailTableView() -> CGFloat{
+	func calcHeightOfDetailTableView() -> CGFloat {
 		return detailsTableView.headerHeight + detailsTableView.footerHeight + CGFloat(detailsTableView.currentNumberOfRows) * detailsTableView.rowHeight
 	}
 	
@@ -167,6 +170,7 @@ class GSDetailScrollView: UIScrollView {
 }
 
 extension GSDetailScrollView: altDetailsTableViewDelegate {
+	
 	func needsToUpdateDetailsTableViewHeight() {
 		updateHeightOfDetailTableView()
 	}
