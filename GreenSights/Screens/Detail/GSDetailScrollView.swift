@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol GSDetailScrollViewDelegate: Any {
+protocol GSDetailScrollViewDelegate: class {
 	func viewDidLayoutSubviews()
 }
 
 class GSDetailScrollView: UIScrollView {
 	//MARK: - Properties & Variables
-	var delegateDV: GSDetailScrollViewDelegate?
+	weak var delegateDV: GSDetailScrollViewDelegate?
 	
 	//MARK: - GUI Objects
 	var heightOfContent = NSLayoutConstraint()

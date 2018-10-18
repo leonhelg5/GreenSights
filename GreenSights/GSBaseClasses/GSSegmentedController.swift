@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol segmentDelegate: Any {
+protocol segmentDelegate: class {
 	func segmentSelected(previous: Int, future: Int)
 }
 
 class GSSegmentController: UIView {
-	var delegate: segmentDelegate?
+	weak var delegate: segmentDelegate?
 	
 	//MARK: - Variables & Properties
 	let myBackColor = UIColor.white//GSSettings.UI.Colors.elementBackgroundColor

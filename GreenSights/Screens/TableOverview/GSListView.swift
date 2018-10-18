@@ -8,13 +8,13 @@
 
 import UIKit
 
-protocol listViewDelegate: Any {
+protocol listViewDelegate: class {
 	func changeViewTo(newView: UIView, oldView: UIView)
 	func pushTo()
 }
 
 class GSListView: UIView {
-	var delegate: listViewDelegate?
+	weak var delegate: listViewDelegate?
 	var listSegmentController = GSSegmentController()
 	
 	lazy var tableView: UITableView = {

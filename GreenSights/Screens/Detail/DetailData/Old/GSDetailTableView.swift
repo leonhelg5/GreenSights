@@ -8,12 +8,12 @@
 //
 //import UIKit
 //
-//protocol detailsTableViewDelegate: Any {
+//protocol detailsTableViewDelegate: class {
 //	func setdetailsTVHeight(height: CGFloat)
 //}
 //
 //class GSDetailTableView: UIView {
-//	var delegate: detailsTableViewDelegate?
+//	weak var delegate: detailsTableViewDelegate?
 //	var titles = ["Sitzplätze", "Regensicher", "Lautstärkentoleranz", "Polizeipräsenz", "Anwohner", "Passanten", "Erreichbarkeit"]
 //	var values = ["13", "Ja", "Keine", "Keine", "Mittel", "Wenig", "Gut"]
 //

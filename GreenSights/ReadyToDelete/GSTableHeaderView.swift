@@ -13,7 +13,7 @@ import UIKit
 //}
 
 class GSTableHeaderView: UIView {
-//	var delegateHV: tableHeaderViewDelegate?
+//	weak var delegateHV: tableHeaderViewDelegate?
 	
 	var label = UILabel()
 	

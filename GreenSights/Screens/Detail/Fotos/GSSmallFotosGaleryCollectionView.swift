@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol GSFotosViewDelegate: Any {
+protocol GSFotosViewDelegate: class {
 	func viewDidLayoutSubviews()
 }
 
 class GSSmallFotosGaleryCollectionView: UIView, UICollectionViewDelegateFlowLayout {
-	var delegateFV: GSFotosViewDelegate?
+	weak var delegateFV: GSFotosViewDelegate?
 	
 	let paddingBetweenLabelAndCV: CGFloat = 4
 	

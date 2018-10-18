@@ -9,12 +9,12 @@
 import UIKit
 import Foundation
 
-protocol altDetailsTableViewDelegate: Any {
+protocol altDetailsTableViewDelegate: class {
 	func needsToUpdateDetailsTableViewHeight()
 }
 
 class GSAltDetailTableView: UIView {
-	var delegate: altDetailsTableViewDelegate?
+	weak var delegate: altDetailsTableViewDelegate?
 	var titles = ["Sitzplätze", "Regensicher", "Lautstärkentoleranz", "Polizeipräsenz", "Anwohner", "Passanten", "Erreichbarkeit"]
 	var values = ["13", "Ja", "Keine", "Keine", "Mittel", "Wenig", "Gut"]
 	var headerId = "headerId"
