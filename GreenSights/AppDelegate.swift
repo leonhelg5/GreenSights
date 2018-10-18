@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		window = UIWindow()
 		window?.makeKeyAndVisible()
 		window?.rootViewController = GSTabBarController()
-		
+		//here
 		return true
 	}
 	
