@@ -32,6 +32,9 @@ class GSPinterestCell: UICollectionViewCell, ReusableView {
         self.backgroundColor = GSSettings.ui.colors.backgroundWhite
         setupSubviews()
         setupContstraints()
+        layer.cornerRadius = 10
+        layer.borderColor = UIColor.white.cgColor
+        layer.borderWidth = 5
     }
     
     func setupSubviews() {
@@ -41,7 +44,9 @@ class GSPinterestCell: UICollectionViewCell, ReusableView {
     
     func setupContstraints() {
         //photoImageView.fillSuperview(onlySafeArea: false)
-        typeLabel.fillSuperview(onlySafeArea: true)
+        typeLabel.translatesAutoresizingMaskIntoConstraints = false
+        typeLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        typeLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
     
     func configure(dataSource: Datasource?) {
@@ -57,7 +62,6 @@ class GSPinterestCell: UICollectionViewCell, ReusableView {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.frame = .zero
         self.typeLabel.text = ""
     }
 }

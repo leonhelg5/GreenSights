@@ -275,12 +275,12 @@ extension GSCollectionView: UICollectionViewDelegate, UICollectionViewDataSource
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GSPinterestCell.reuseIdentifier, for: indexPath) as! GSPinterestCell
-		cell.backgroundColor = .green
-		cell.layer.cornerRadius = 10
-		cell.layer.borderColor = UIColor.white.cgColor
-		cell.layer.borderWidth = 5
 		cell.configure(dataSource: addedElements[indexPath.row])
 		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		print("cell clicked")
 	}
 }
 
