@@ -23,6 +23,7 @@ class GSPinterestCell: UICollectionViewCell, ReusableView {
     let typeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
+        label.textAlignment = .center
         return label
     }()
     
@@ -52,5 +53,11 @@ class GSPinterestCell: UICollectionViewCell, ReusableView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.frame = .zero
+        self.typeLabel.text = ""
     }
 }

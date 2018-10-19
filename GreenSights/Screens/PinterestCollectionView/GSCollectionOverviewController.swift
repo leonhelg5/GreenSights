@@ -43,9 +43,7 @@ class GSCollectionOverviewController: GSBaseViewController {
     }
     
     @objc func resetOrder() {
-        containerView.addedElements.removeAll()
-        containerView.remainingElements.removeAll()
-        containerView.filterDataSourceToMatchLayout()
+        containerView.resetLayout()
     }
     
     override func didReceiveMemoryWarning() {

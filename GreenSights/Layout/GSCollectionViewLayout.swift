@@ -10,7 +10,8 @@ import UIKit
 
 protocol GSCollectionViewLayoutDelegate: class {
     
-    func collectionView(_ collectionView:UICollectionView, typeForCellAtIndexPath indexPath:IndexPath) -> cellType
+    func collectionView(_ collectionView:UICollectionView, sizeForCellAtIndexPath indexPath:IndexPath) -> cellSize
+    func somethingWentWrong()
 }
 
 /**
@@ -29,7 +30,7 @@ class GSCollectionViewLayout: UICollectionViewLayout {
     var cache = [UICollectionViewLayoutAttributes]()
     
     // 4 This declares two properties to store the content size. contentHeight is incremented as photos are added, and contentWidth is calculated based on the collection view width and its content inset.
-    fileprivate var contentHeight: CGFloat = 0
+    var contentHeight: CGFloat = 0
     
     fileprivate var contentWidth: CGFloat {
         guard let collectionView = collectionView else { return 0 }
@@ -42,12 +43,13 @@ class GSCollectionViewLayout: UICollectionViewLayout {
         return CGSize(width: contentWidth, height: contentHeight)
     }
     
-    
-    
     override func prepare() {
-        // 1 You only calculate the layout attributes if cache is empty and the collection view exists.
-        guard cache.isEmpty == true, let collectionView = collectionView else { return }
+        // 1 You only calculate the layout attributes if collection view exists.
+        guard let collectionView = collectionView else { print("collectionView does not exist (yet)"); return }
         // 2 This declares and fills the xOffset array with the x-coordinate for every column based on the column widths. The yOffset array tracks the y-position for every column. You initialize each value in yOffset to 0, since this is the offset of the first item in each column.
+        cache = [UICollectionViewLayoutAttributes]()
+        contentHeight = 0
+        
         let columnWidth = contentWidth / CGFloat(numberOfColumns)
         var xOffset = [CGFloat]()
         for column in 0 ..< numberOfColumns {
@@ -56,52 +58,43 @@ class GSCollectionViewLayout: UICollectionViewLayout {
         var column = 0
         var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
         
-        var lastItemType = cellType.landscape
-        
         // 3 This loops through all the items in the first section, as this particular layout has only one section.
         for item in 0 ..< collectionView.numberOfItems(inSection: 0) {
             
             let indexPath = IndexPath(item: item, section: 0)
             
             // 4 This is where you perform the frame calculation. width is the previously calculated cellWidth, with the padding between cells removed. You ask the delegate for the type of the photo and calculate the frame height and width based on these values and the predefined cellPadding for the top and bottom. You then combine this with the x and y offsets of the current column to create the insetFrame used by the attribute.
-            let type = delegate.collectionView(collectionView, typeForCellAtIndexPath: indexPath)
+            var size = delegate.collectionView(collectionView, sizeForCellAtIndexPath: indexPath)
             var height: CGFloat = 0
             var width: CGFloat = 0
             
-            switch type {
+            switch size {
             case .portrait:
                 height = contentWidth
                 width  = columnWidth
             case .landscape:
-                if column == 0 {
-                    height = columnWidth
-                    width  = contentWidth
-                } else {
-                    //TODO: safe cell for later or implement sort func
-                    height = columnWidth
-                    width  = columnWidth
+                if column == 1 {
+                    delegate.somethingWentWrong()
                 }
-            case .square:
-                if column == 0 && yOffset[1] <= yOffset[0] && lastItemType != .square {
-                    height = contentWidth
-                    width  = contentWidth
-                } else {
-                    height = columnWidth
-                    width  = columnWidth
-                }
+                column = 0
+                height = columnWidth
+                width  = contentWidth
+            case .bigSquare where column == 0:
+                height = contentWidth
+                width  = contentWidth
+            default:
+                size = .smallSquare
+                height = columnWidth
+                width  = columnWidth
             }
-            lastItemType = type
             
             let frame = CGRect(x: xOffset[column], y: yOffset[column], width: width, height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
-            
-            print(type, frame, column)
             
             // 5 This creates an instance of UICollectionViewLayoutAttribute, sets its frame using insetFrame and appends the attributes to cache.
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             attributes.frame = insetFrame
             cache.append(attributes)
-            
             
             // 6 This expands contentHeight to account for the frame of the newly calculated item. It then advances the yOffset for the current columns based on the frame. Finally, it advances the column so that the next item will be placed in the correct column.
             contentHeight = max(contentHeight, frame.maxY)
@@ -115,21 +108,20 @@ class GSCollectionViewLayout: UICollectionViewLayout {
                 } else {
                     column = 1
                 }
-                if yOffset[0] > yOffset[1] {
-                    print("entered")
-                    column = 1
-                }
-            } else {
-                if yOffset[1] >= yOffset[0] {
-                    column = 0
-                }
             }
+            if yOffset[0] > yOffset[1] {
+                column = 1
+            } else if yOffset[1] >= yOffset[0] {
+                column = 0
+            }
+            
+            //TODO: If the bottom is not aligned (yOffset0 == yOffset1), call delegate for reload
+//            if yOffset[0] != yOffset[1] {
+//                delegate.somethingWentWrong()
+//            }
         }
     }
-    
-    
-    
-    
+
     /**
      Here you iterate through the attributes in cache and check if their frames intersect with rect, which is provided by the collection view. You add any attributes with frames that intersect with that rect to layoutAttributes, which is eventually returned to the collection view.
      */
