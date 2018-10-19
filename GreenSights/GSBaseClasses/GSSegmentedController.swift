@@ -43,7 +43,7 @@ class GSSegmentController: UIView {
 	var selectionViewLeftConstraint = NSLayoutConstraint()
 	lazy var selectionView: UIView = {
 		let view = UIView()
-		view.backgroundColor = tintColor
+		view.backgroundColor = myTintColor
 		return view
 	}()
 	

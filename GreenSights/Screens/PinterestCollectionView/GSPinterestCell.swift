@@ -32,21 +32,22 @@ class GSPinterestCell: UICollectionViewCell, ReusableView {
         self.backgroundColor = GSSettings.ui.colors.backgroundWhite
         setupSubviews()
         setupContstraints()
-        layer.cornerRadius = 10
+        layer.cornerRadius = GSSettings.ui.sizes.cornerRadius
         layer.borderColor = UIColor.white.cgColor
-        layer.borderWidth = 5
+        layer.borderWidth = 0
     }
     
     func setupSubviews() {
-        //addSubview(photoImageView)
-        addSubview(typeLabel)
+        addSubview(photoImageView)
+        //addSubview(typeLabel)
     }
     
     func setupContstraints() {
-        //photoImageView.fillSuperview(onlySafeArea: false)
-        typeLabel.translatesAutoresizingMaskIntoConstraints = false
-        typeLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-        typeLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        photoImageView.fillSuperview(onlySafeArea: true)
+        photoImageView.layer.cornerRadius = GSSettings.ui.sizes.cornerRadius
+//        typeLabel.translatesAutoresizingMaskIntoConstraints = false
+//        typeLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+//        typeLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
     
     func configure(dataSource: Datasource?) {
@@ -54,6 +55,13 @@ class GSPinterestCell: UICollectionViewCell, ReusableView {
         data = dataSource
         guard let type = data?.type else { return }
         typeLabel.text = "\(type)"
+        if type == .landscape {
+            photoImageView.image = UIImage(named: "landscape")
+        } else if type == .portrait {
+            photoImageView.image = UIImage(named: "portrait")
+        } else {
+            photoImageView.image = UIImage(named: "square")
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
