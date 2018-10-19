@@ -16,6 +16,7 @@ class GSCollectionOverviewController: GSBaseViewController {
         super.viewDidLoad()
         setupSubview()
         updateViewConstraints()
+        setupNavBar()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,6 +36,16 @@ class GSCollectionOverviewController: GSBaseViewController {
     override func updateViewConstraints() {
         super.updateViewConstraints()
         self.setupConstraints()
+    }
+    
+    func setupNavBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Reload", style: .plain, target: self, action: #selector(resetOrder))
+    }
+    
+    @objc func resetOrder() {
+        containerView.addedElements.removeAll()
+        containerView.remainingElements.removeAll()
+        containerView.filterDataSourceToMatchLayout()
     }
     
     override func didReceiveMemoryWarning() {

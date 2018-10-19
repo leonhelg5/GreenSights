@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1814A4E72179CE5500F64D85 /* GS+Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814A4E62179CE5500F64D85 /* GS+Int.swift */; };
+		1814A4E92179D11B00F64D85 /* GSPinterestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1814A4E82179D11B00F64D85 /* GSPinterestCell.swift */; };
 		1867A78221678EDC00278A92 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867A78121678EDC00278A92 /* AppDelegate.swift */; };
 		1867A78421678EDC00278A92 /* GSListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867A78321678EDC00278A92 /* GSListViewController.swift */; };
 		1867A78C21678EDE00278A92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1867A78A21678EDE00278A92 /* LaunchScreen.storyboard */; };
@@ -61,6 +63,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1814A4E62179CE5500F64D85 /* GS+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+Int.swift"; sourceTree = "<group>"; };
+		1814A4E82179D11B00F64D85 /* GSPinterestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSPinterestCell.swift; sourceTree = "<group>"; };
 		1867A77E21678EDC00278A92 /* GreenSights.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GreenSights.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1867A78121678EDC00278A92 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1867A78321678EDC00278A92 /* GSListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSListViewController.swift; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 				FE3C2DAC217345D400E700A1 /* GS+UILabel.swift */,
 				1867A79B2167913700278A92 /* GSPOP */,
 				18F5106E21772819006CE47F /* GS+CGSize.swift */,
+				1814A4E62179CE5500F64D85 /* GS+Int.swift */,
 			);
 			path = GSExtensions;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 			children = (
 				18F5106A21771CAD006CE47F /* GSCollectionOverviewController.swift */,
 				18F5106C21771CE3006CE47F /* GSCollectionView.swift */,
+				1814A4E82179D11B00F64D85 /* GSPinterestCell.swift */,
 			);
 			path = PinterestCollectionView;
 			sourceTree = "<group>";
@@ -452,6 +458,7 @@
 				18F5106D21771CE3006CE47F /* GSCollectionView.swift in Sources */,
 				FE7326EA216BF81700FE3C45 /* GSBottomView.swift in Sources */,
 				FE91BECE2170C4C1003B4430 /* GSPhotoSelectorController.swift in Sources */,
+				1814A4E72179CE5500F64D85 /* GS+Int.swift in Sources */,
 				1867A79521678F2600278A92 /* GSSettings.swift in Sources */,
 				FE3C2DB72173969000E700A1 /* GSPickerTableView.swift in Sources */,
 				FE91BED02170C534003B4430 /* GSPhotoSelectorCollectionView.swift in Sources */,
@@ -464,6 +471,7 @@
 				FEC7F3D12167C11900F9013E /* GSListModel.swift in Sources */,
 				FE3C2DB921739CDC00E700A1 /* GSTableHeaderView.swift in Sources */,
 				1867A79A2167910600278A92 /* GS+UIView.swift in Sources */,
+				1814A4E92179D11B00F64D85 /* GSPinterestCell.swift in Sources */,
 				FE7326EC216BF83F00FE3C45 /* GSVotingStackView.swift in Sources */,
 				FE91BEDA217140C2003B4430 /* GSInfoButton.swift in Sources */,
 				FE7326F1216C9B6C00FE3C45 /* GSDetailViewController.swift in Sources */,

@@ -56,6 +56,8 @@ class GSCollectionViewLayout: UICollectionViewLayout {
         var column = 0
         var yOffset = [CGFloat](repeating: 0, count: numberOfColumns)
         
+        var lastItemType = cellType.landscape
+        
         // 3 This loops through all the items in the first section, as this particular layout has only one section.
         for item in 0 ..< collectionView.numberOfItems(inSection: 0) {
             
@@ -80,7 +82,7 @@ class GSCollectionViewLayout: UICollectionViewLayout {
                     width  = columnWidth
                 }
             case .square:
-                if column == 0 {
+                if column == 0 && yOffset[1] <= yOffset[0] && lastItemType != .square {
                     height = contentWidth
                     width  = contentWidth
                 } else {
@@ -88,15 +90,17 @@ class GSCollectionViewLayout: UICollectionViewLayout {
                     width  = columnWidth
                 }
             }
+            lastItemType = type
             
             let frame = CGRect(x: xOffset[column], y: yOffset[column], width: width, height: height)
             let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
+            
+            print(type, frame, column)
             
             // 5 This creates an instance of UICollectionViewLayoutAttribute, sets its frame using insetFrame and appends the attributes to cache.
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
             attributes.frame = insetFrame
             cache.append(attributes)
-            
             
             
             // 6 This expands contentHeight to account for the frame of the newly calculated item. It then advances the yOffset for the current columns based on the frame. Finally, it advances the column so that the next item will be placed in the correct column.
@@ -105,14 +109,18 @@ class GSCollectionViewLayout: UICollectionViewLayout {
             yOffset[column] = yOffset[column] + height
             if column == 0 {
                 //Big square or landscape take both columns:
-                if type == .square || type == .landscape {
-                    yOffset[1] = yOffset[1] + height
+                if width == contentWidth {
+                    yOffset[1] = yOffset[0]
                     column = 0
                 } else {
                     column = 1
                 }
+                if yOffset[0] > yOffset[1] {
+                    print("entered")
+                    column = 1
+                }
             } else {
-                if yOffset[0] == yOffset[1] {
+                if yOffset[1] >= yOffset[0] {
                     column = 0
                 }
             }
