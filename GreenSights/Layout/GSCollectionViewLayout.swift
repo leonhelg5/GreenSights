@@ -26,7 +26,7 @@ class GSCollectionViewLayout: UICollectionViewLayout {
     fileprivate var cellPadding: CGFloat = 8
     
     // 3 This is an array to cache the calculated attributes. When you call prepare(), you’ll calculate the attributes for all items and add them to the cache. When the collection view later requests the layout attributes, you can be efficient and query the cache instead of recalculating them every time.
-    fileprivate var cache = [UICollectionViewLayoutAttributes]()
+    var cache = [UICollectionViewLayoutAttributes]()
     
     // 4 This declares two properties to store the content size. contentHeight is incremented as photos are added, and contentWidth is calculated based on the collection view width and its content inset.
     fileprivate var contentHeight: CGFloat = 0

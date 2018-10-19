@@ -22,10 +22,9 @@ struct Datasource {
 
 class GSCollectionView: UIView {
     
+    let collectionViewLayout = GSCollectionViewLayout()
     lazy var collectionView: UICollectionView = {
-        let layout = GSCollectionViewLayout()
-        layout.delegate = self
-        let collectionview = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        let collectionview = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
         collectionview.showsHorizontalScrollIndicator   = false
         collectionview.backgroundColor                  = .black
         collectionview.bounces                          = true
@@ -59,6 +58,7 @@ class GSCollectionView: UIView {
     
     func setupSubviews() {
         addSubview(collectionView)
+        collectionViewLayout.delegate = self
     }
     func setupConstraints() {
         collectionView.fillSuperview(onlySafeArea: true)
@@ -93,6 +93,7 @@ class GSCollectionView: UIView {
         
         DispatchQueue.main.async {
             print("reloading now")
+            self.collectionViewLayout.cache.removeAll()
             self.collectionView.reloadData()
         }
         printTypeOf(array: addedElements)
