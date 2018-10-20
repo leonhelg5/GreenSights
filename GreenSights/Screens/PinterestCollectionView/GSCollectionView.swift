@@ -34,7 +34,7 @@ class GSCollectionView: UIView {
 	lazy var collectionView: UICollectionView = {
 		let collectionview = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
 		collectionview.showsHorizontalScrollIndicator   = false
-		collectionview.backgroundColor                  = .black
+		collectionview.backgroundColor                  = .white
 		collectionview.bounces                          = true
 		collectionview.allowsSelection                  = false
 		collectionview.delegate                         = self
@@ -46,22 +46,18 @@ class GSCollectionView: UIView {
 	let square  = Datasource(titel: "Small", subtitle: "Subtitle", type: .square, size: nil)
 	let port    = Datasource(titel: "Portrait", subtitle: "subtitle", type: .portrait, size: .portrait)
 	let land    = Datasource(titel: "landscape", subtitle: "subt", type: .landscape, size: .landscape)
-	var dataSource = [Datasource]() {
-		didSet {
-			filterDataSourceToMatchLayout()
-		}
-	}
+	var dataSource = [Datasource]()
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = .black
+		self.backgroundColor = .white
 		dataSource = [square, square, port, square, land, square, port, land, square, square, port, land, square, square, land, land]
 	}
 	
 	func parentVCDidAppear() {
 		setupSubviews()
 		setupConstraints()
-		filterDataSourceToMatchLayout()
+		filterNextElementsOfDataSource(15)
 	}
 	
 	func setupSubviews() {
@@ -79,14 +75,14 @@ class GSCollectionView: UIView {
 	var secondLastItem:       Datasource?
 	var thirdLastItem:        Datasource?
 	
-	func filterDataSourceToMatchLayout() {
-		printTypeOf(array: dataSource)
-		remainingElements = dataSource//.shuffled()
+	func filterNextElementsOfDataSource(_ amount: Int) {
+		remainingElements = Array(dataSource.prefix(amount))
+		remainingElements.shuffle()
 		repeat {
 			if lastItem == nil {
 				getRandomItem()
 			} else {
-				if landscapeCanBeSpawned() {
+				if twoColumnItemCanBeSpawned() {
 					getRandomItem()
 				} else {
 					if oneColumnItemExists() {
@@ -104,7 +100,6 @@ class GSCollectionView: UIView {
 			self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
 		}
 		layoutIfNeeded()
-		printTypeOf(array: remainingElements)
 	}
 	
 
@@ -181,7 +176,7 @@ class GSCollectionView: UIView {
 	
 	
 	//We dont want more than two landscapes in a row
-	func landscapeCanBeSpawned() -> Bool {
+	func twoColumnItemCanBeSpawned() -> Bool {
 		guard let lastItemSize = lastItem?.size else { return true }
 		//Because the big Square and the Landscape take two columns, landscape can be spawned
 		guard let secondLastItemSize = secondLastItem?.size else {
@@ -204,7 +199,7 @@ class GSCollectionView: UIView {
 		}
 		guard let thirdLastItemSize = thirdLastItem?.size else { return true }
 		if (lastItemSize == .portrait && secondLastItemSize == .portrait && (thirdLastItemSize == .smallSquare || thirdLastItemSize == .portrait)) {
-			return false
+			return false //not 100% accurate
 		}
 		
 		return true
@@ -232,8 +227,7 @@ class GSCollectionView: UIView {
 	
 	func removeLastTenItems() {
 		//First check if there are even 10 elements in the array
-		var repeatCounter = 0
-		repeatCounter = addedElements.count < 10 ? addedElements.count : 10
+		let repeatCounter = addedElements.count < 10 ? addedElements.count : 10
 		
 		//Then remove the last elements based on the counter
 		for _ in 0..<repeatCounter {
@@ -252,10 +246,10 @@ class GSCollectionView: UIView {
 		addedElements.removeAll()
 		remainingElements.removeAll()
 		collectionView.contentSize = .zero
-		filterDataSourceToMatchLayout()
+		filterNextElementsOfDataSource(15)
 	}
 	
-	//MARK: REMOVE
+	#warning("Remove this method")
 	func printTypeOf(array: [Datasource]) {
 		print("_____")
 		for item in array {
