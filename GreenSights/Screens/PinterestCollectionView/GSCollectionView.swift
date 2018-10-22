@@ -30,6 +30,31 @@ struct Datasource {
 
 class GSCollectionView: UIView {
 	
+	let square  = Datasource(titel: "Square", subtitle: "Subtitle", type: .square, size: nil)
+	let port    = Datasource(titel: "Portrait", subtitle: "subtitle", type: .portrait, size: .portrait)
+	let land    = Datasource(titel: "landscape", subtitle: "subt", type: .landscape, size: .landscape)
+	var dataSource = [Datasource]()
+	
+	var addedElements       = [Datasource]()
+	var remainingElements   = [Datasource]()
+	var lastItem:             Datasource?
+	var secondLastItem:       Datasource?
+	var thirdLastItem:        Datasource?
+	
+	
+	var lastClickedCell				= GSPinterestCell()
+	var copyOfSelectedView 			= UIImageView()
+	var frameOfSelectedView			= CGRect()
+	var copyOfSelectedViewMidX 		= NSLayoutConstraint()
+	var copyOfSelectedViewMidY 		= NSLayoutConstraint()
+	var copyOfSelectedViewHeight 	= NSLayoutConstraint()
+	var copyOfSelectedViewWidth 	= NSLayoutConstraint()
+	var blackView: UIView = {
+		let view = UIView()
+		view.backgroundColor = UIColor.black.withAlphaComponent(1)
+		return view
+	}()
+	
 	let collectionViewLayout = GSCollectionViewLayout()
 	lazy var collectionView: UICollectionView = {
 		let collectionview = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
@@ -42,11 +67,6 @@ class GSCollectionView: UIView {
 		collectionview.register(GSPinterestCell.self, forCellWithReuseIdentifier: GSPinterestCell.reuseIdentifier)
 		return collectionview
 	}()
-	
-	let square  = Datasource(titel: "Square", subtitle: "Subtitle", type: .square, size: nil)
-	let port    = Datasource(titel: "Portrait", subtitle: "subtitle", type: .portrait, size: .portrait)
-	let land    = Datasource(titel: "landscape", subtitle: "subt", type: .landscape, size: .landscape)
-	var dataSource = [Datasource]()
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -61,192 +81,76 @@ class GSCollectionView: UIView {
 	}
 	
 	func setupSubviews() {
+		let gestureRec = UITapGestureRecognizer(target: self, action: #selector(putCellBackToOrigin))
 		addSubview(collectionView)
 		collectionViewLayout.delegate = self
+		addSubview(blackView)
+		blackView.addGestureRecognizer(gestureRec)
+		blackView.alpha = 0
+		blackView.isHidden = true
+		addSubview(copyOfSelectedView)
+		copyOfSelectedView.isHidden = true
 	}
+	
 	func setupConstraints() {
 		collectionView.fillSuperview(onlySafeArea: true)
 		collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+		blackView.fillSuperview(onlySafeArea: true)
+		copyOfSelectedView.translatesAutoresizingMaskIntoConstraints = false
+		copyOfSelectedViewMidX = copyOfSelectedView.centerXAnchor.constraint(equalTo: centerXAnchor)
+		copyOfSelectedViewMidY = copyOfSelectedView.centerYAnchor.constraint(equalTo: centerYAnchor)
 	}
 	
-	var addedElements       = [Datasource]()
-	var remainingElements   = [Datasource]()
-	var lastItem:             Datasource?
-	var secondLastItem:       Datasource?
-	var thirdLastItem:        Datasource?
-	
-	func filterNextElementsOfDataSource(_ amount: Int) {
-		remainingElements = Array(dataSource.prefix(amount))
-		remainingElements.shuffle()
-		repeat {
-			if lastItem == nil {
-				getRandomItem()
-			} else {
-				if twoColumnItemCanBeSpawned() {
-					getRandomItem()
-				} else {
-					if oneColumnItemExists() {
-						getRandomSingleColumnItem()
-					} else {
-						removeLastTenItems()
-					}
-				}
-			}
-		} while !remainingElements.isEmpty
+	func centerSelectedCell(screenshot: UIImage, frame: CGRect, size: cellSize) {
+		copyOfSelectedView.image 	= screenshot
+		copyOfSelectedView.frame 	= frameOfSelectedView
+		copyOfSelectedView.isHidden = false
 		
-		setNeedsLayout()
-		DispatchQueue.main.async {
-			self.collectionView.reloadData()
-			self.collectionView.scrollToItem(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+		//If its a big square or landscape it sould not do increase the size.
+		switch size {
+		case .bigSquare:
+			copyOfSelectedViewWidth 	= copyOfSelectedView.widthAnchor.constraint(equalToConstant: frame.width)
+			copyOfSelectedViewHeight 	= copyOfSelectedView.heightAnchor.constraint(equalToConstant: frame.height)
+		case .landscape:
+			copyOfSelectedViewWidth 	= copyOfSelectedView.widthAnchor.constraint(equalToConstant: frame.width)
+			copyOfSelectedViewHeight 	= copyOfSelectedView.heightAnchor.constraint(equalToConstant: frame.height)
+		case .portrait:
+			copyOfSelectedViewWidth 	= copyOfSelectedView.widthAnchor.constraint(equalToConstant: frame.width * 1.5)
+			copyOfSelectedViewHeight 	= copyOfSelectedView.heightAnchor.constraint(equalToConstant: frame.height * 1.5)
+		case .smallSquare:
+			copyOfSelectedViewWidth 	= copyOfSelectedView.widthAnchor.constraint(equalToConstant: frame.width * 2 + collectionViewLayout.cellPadding * 2)
+			copyOfSelectedViewHeight 	= copyOfSelectedView.heightAnchor.constraint(equalToConstant: frame.height * 2 + collectionViewLayout.cellPadding * 2)
 		}
-		layoutIfNeeded()
+
+		copyOfSelectedViewWidth.isActive 	= true
+		copyOfSelectedViewHeight.isActive 	= true
+		copyOfSelectedViewMidX.isActive 	= true
+		copyOfSelectedViewMidY.isActive 	= true
+
+		self.blackView.isHidden = false
+		UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+			self.layoutIfNeeded()
+			self.blackView.alpha = 0.7
+		}) { (completed) in
+			//TODO
+		}
 	}
 	
-	
-	//MARK: Generate Methods
-	func getRandomItem() {
-		let randomNum = Int.random(in: 0 ..< remainingElements.count)
-		var item = remainingElements[randomNum]
-		if item.type == .square {
-			item.size = smallOrBigSquare()
-		}
-		addItemToArray(item: item, index: randomNum)
-	}
-	
-	func getRandomSingleColumnItem() {
-		var item: Datasource
-		var randomNum = 0
-		repeat {
-			randomNum = Int.random(in: 0 ..< remainingElements.count)
-			item = remainingElements[randomNum]
-		} while !(item.type == .square || item.type == .portrait)
+	@objc func putCellBackToOrigin() {
+		copyOfSelectedViewMidX.isActive 	= false
+		copyOfSelectedViewMidY.isActive 	= false
+		copyOfSelectedViewWidth.isActive 	= false
+		copyOfSelectedViewHeight.isActive 	= false
 		
-		if item.type == .square {
-			item.size = .smallSquare
+		UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+			self.layoutIfNeeded()
+			self.blackView.alpha = 0.0
+			self.copyOfSelectedView.frame = self.frameOfSelectedView
+		}) { (completed) in
+			self.blackView.isHidden = true
+			self.lastClickedCell.isHidden = false
+			self.copyOfSelectedView.isHidden = true
 		}
-		addItemToArray(item: item, index: randomNum)
-	}
-	
-	
-	//MARK: Decider Methods
-	/**
-	I dont want:
-	* Big Square At the beginning
-	* Two Big Squares in a row
-	* Three Small Squares in a row (disabled atm)
-	*/
-	func smallOrBigSquare() -> cellSize {
-		guard let lastItemSize = lastItem?.size else { return
-			.smallSquare
-		}
-		if lastItemSize == .bigSquare {
-			return .smallSquare
-		}
-		guard let secondLastItemSize = secondLastItem?.size else {
-			if lastItemSize == .portrait || lastItemSize == .smallSquare {
-				return .smallSquare
-			} else {
-				return Bool.random() ? .bigSquare : .smallSquare
-			}
-		}
-		if lastItemSize == .smallSquare && secondLastItemSize == .smallSquare {
-			return .bigSquare
-		}
-		if secondLastItemSize == .landscape || secondLastItemSize == .bigSquare {
-			return .smallSquare
-		}
-		if (lastItemSize == .portrait || lastItemSize == .smallSquare) && (secondLastItemSize == .landscape || secondLastItemSize == .bigSquare) {
-			return .smallSquare
-		}
-		return Bool.random() ? .bigSquare : .smallSquare
-	}
-	
-	
-	//MARK: Check IF <..> Methods
-	func oneColumnItemExists() -> Bool {
-		let oneColumnItemExists = remainingElements.contains(where: { (remainingItem) -> Bool in
-			if remainingItem.type == cellType.square {
-				return true
-			} else if remainingItem.type == .portrait {
-				return true
-			} else { return false }
-		})
-		return oneColumnItemExists
-	}
-	
-	
-	//We dont want more than two landscapes in a row
-	func twoColumnItemCanBeSpawned() -> Bool {
-		guard let lastItemSize = lastItem?.size else { return true }
-		//Because the big Square and the Landscape take two columns, landscape can be spawned
-		guard let secondLastItemSize = secondLastItem?.size else {
-			if lastItemSize == .bigSquare || lastItemSize == .landscape {
-				return true
-			} else {
-				return false
-			}
-		}
-		if (lastItemSize == .portrait && secondLastItemSize == .smallSquare) {
-			return false
-		} else if (lastItemSize == .smallSquare && secondLastItemSize == .portrait) {
-			return false
-		} else if (lastItemSize == .smallSquare && (secondLastItemSize == .bigSquare || secondLastItemSize == .landscape)) {
-			return false
-		} else if (lastItemSize == .portrait && (secondLastItemSize == .bigSquare || secondLastItemSize == .landscape)) {
-			return false
-		} else if (lastItemSize == .landscape && secondLastItemSize == .landscape) {
-			return false
-		}
-		guard let thirdLastItemSize = thirdLastItem?.size else { return true }
-		if (lastItemSize == .portrait && secondLastItemSize == .portrait && (thirdLastItemSize == .smallSquare || thirdLastItemSize == .portrait)) {
-			return false //not 100% accurate
-		}
-		
-		return true
-	}
-	
-	
-	//MARK: - Setter / Remover Methods
-	func addItemToArray(item: Datasource, index: Int) {
-		addedElements.append(item)
-		remainingElements.remove(at: index)
-		setLastItems()
-	}
-	
-	func setLastItems() {
-		if addedElements.count >= 1 {
-			lastItem = addedElements[addedElements.count-1]
-		} else { lastItem = nil}
-		if addedElements.count >= 2 {
-			secondLastItem = addedElements[addedElements.count-2]
-		} else { secondLastItem = nil}
-		if addedElements.count >= 3 {
-			thirdLastItem = addedElements[addedElements.count-3]
-		} else { thirdLastItem = nil}
-	}
-	
-	func removeLastTenItems() {
-		//First check if there are even 10 elements in the array
-		let repeatCounter = addedElements.count < 10 ? addedElements.count : 10
-		
-		//Then remove the last elements based on the counter
-		for _ in 0..<repeatCounter {
-			guard let item = addedElements.last else { return }
-			addedElements.removeLast()
-			remainingElements.append(item)
-			remainingElements.shuffle()
-		}
-		setLastItems()
-	}
-	
-	func resetLayout() {
-		lastItem = nil
-		secondLastItem = nil
-		thirdLastItem = nil
-		addedElements.removeAll()
-		remainingElements.removeAll()
-		collectionView.contentSize = .zero
-		filterNextElementsOfDataSource(15)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -266,14 +170,25 @@ extension GSCollectionView: UICollectionViewDelegate, UICollectionViewDataSource
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		guard let cell = collectionView.cellForItem(at: indexPath) as? GSPinterestCell else { return }
-		cell.isFlipped.toggle()
-		if !cell.isFlipped {
-			cell.flip(toRight: false, flipView: cell.contentView, viewsToHide: [cell.friendsImageView], viewsToShow: [cell.titleLabel])
-		} else {
-			cell.flip(toRight: true, flipView: cell.contentView, viewsToHide: [cell.titleLabel], viewsToShow: [cell.friendsImageView])
-		}
 		
+		guard let cell = collectionView.cellForItem(at: indexPath) as? GSPinterestCell else { return }
+		guard let cellsView = cell.screenshotMyself() else { return }
+		guard let size = cell.data?.size else { return }
+		
+		let theAttributes:UICollectionViewLayoutAttributes! = collectionView.layoutAttributesForItem(at: indexPath)
+		let translatedFrame = collectionView.convert(theAttributes.frame, to: collectionView.superview)
+		frameOfSelectedView = translatedFrame
+		lastClickedCell = cell
+		lastClickedCell.isHidden.toggle()
+		centerSelectedCell(screenshot: cellsView, frame: translatedFrame, size: size)
+		
+		
+//		cell.isFlipped.toggle()
+//		if !cell.isFlipped {
+//			cell.flip(toRight: false, flipView: cell.contentView, viewsToHide: [cell.friendsImageView], viewsToShow: [cell.titleLabel])
+//		} else {
+//			cell.flip(toRight: true, flipView: cell.contentView, viewsToHide: [cell.titleLabel], viewsToShow: [cell.friendsImageView])
+//		}
 	}
 }
 

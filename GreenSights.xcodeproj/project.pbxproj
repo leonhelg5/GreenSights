@@ -18,6 +18,7 @@
 		1867A79D2167915700278A92 /* GS+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867A79C2167915700278A92 /* GS+ReusableView.swift */; };
 		18BA9C792174B9AA00ABFDE5 /* GSTableHeaderContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA9C782174B9AA00ABFDE5 /* GSTableHeaderContainer.swift */; };
 		18CD9E1D217DE39C00128CF4 /* GS+Flipable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD9E1C217DE39C00128CF4 /* GS+Flipable.swift */; };
+		18CD9E1F217E19A200128CF4 /* GSFeedAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD9E1E217E19A200128CF4 /* GSFeedAlgorithm.swift */; };
 		18EEC82521777A38000D5DED /* GSCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEC82421777A38000D5DED /* GSCollectionViewLayout.swift */; };
 		18F5106B21771CAD006CE47F /* GSCollectionOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5106A21771CAD006CE47F /* GSCollectionOverviewController.swift */; };
 		18F5106D21771CE3006CE47F /* GSCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5106C21771CE3006CE47F /* GSCollectionView.swift */; };
@@ -75,10 +76,11 @@
 		1867A78D21678EDE00278A92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1867A79421678F2600278A92 /* GSSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSSettings.swift; sourceTree = "<group>"; usesTabs = 1; };
 		1867A797216790C400278A92 /* GS+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+UIColor.swift"; sourceTree = "<group>"; };
-		1867A7992167910600278A92 /* GS+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+UIView.swift"; sourceTree = "<group>"; };
+		1867A7992167910600278A92 /* GS+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+UIView.swift"; sourceTree = "<group>"; usesTabs = 1; };
 		1867A79C2167915700278A92 /* GS+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+ReusableView.swift"; sourceTree = "<group>"; };
 		18BA9C782174B9AA00ABFDE5 /* GSTableHeaderContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTableHeaderContainer.swift; sourceTree = "<group>"; usesTabs = 1; };
 		18CD9E1C217DE39C00128CF4 /* GS+Flipable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+Flipable.swift"; sourceTree = "<group>"; };
+		18CD9E1E217E19A200128CF4 /* GSFeedAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSFeedAlgorithm.swift; sourceTree = "<group>"; };
 		18EEC82421777A38000D5DED /* GSCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSCollectionViewLayout.swift; sourceTree = "<group>"; };
 		18F5106A21771CAD006CE47F /* GSCollectionOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSCollectionOverviewController.swift; sourceTree = "<group>"; };
 		18F5106C21771CE3006CE47F /* GSCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSCollectionView.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -237,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				18F5106A21771CAD006CE47F /* GSCollectionOverviewController.swift */,
+				18CD9E1E217E19A200128CF4 /* GSFeedAlgorithm.swift */,
 				18F5106C21771CE3006CE47F /* GSCollectionView.swift */,
 				1814A4E82179D11B00F64D85 /* GSPinterestCell.swift */,
 			);
@@ -499,6 +502,7 @@
 				FE91BED22170D197003B4430 /* GSPhotoSelectorHeader.swift in Sources */,
 				FE3C2DB52173965900E700A1 /* GSPickerController.swift in Sources */,
 				18BA9C792174B9AA00ABFDE5 /* GSTableHeaderContainer.swift in Sources */,
+				18CD9E1F217E19A200128CF4 /* GSFeedAlgorithm.swift in Sources */,
 				FE3C2DBE2173A8A600E700A1 /* GSAltDetailTableView.swift in Sources */,
 				18CD9E1D217DE39C00128CF4 /* GS+Flipable.swift in Sources */,
 				18F5106F21772819006CE47F /* GS+CGSize.swift in Sources */,

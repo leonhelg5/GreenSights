@@ -103,6 +103,14 @@ class GSPinterestCell: UICollectionViewCell, ReusableView, Flipable {
 	func updateGradientLayer(frame: CGRect) {
 		gradientLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: 80)
 	}
+	
+	func screenshotMyself() -> UIImage? {
+		UIGraphicsBeginImageContextWithOptions(contentView.bounds.size, false, UIScreen.main.scale)
+		contentView.layer.render(in: UIGraphicsGetCurrentContext()!)
+		let image = UIGraphicsGetImageFromCurrentImageContext()
+		UIGraphicsEndImageContext()
+		return image
+	}
 
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")

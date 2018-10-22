@@ -24,7 +24,7 @@ class GSCollectionViewLayout: UICollectionViewLayout {
     
     // 2 These are two properties for configuring the layout: the number of columns and the cell padding.
     fileprivate var numberOfColumns = 2
-    fileprivate var cellPadding: CGFloat = 8
+    var cellPadding: CGFloat = 8
     
     // 3 This is an array to cache the calculated attributes. When you call prepare(), you’ll calculate the attributes for all items and add them to the cache. When the collection view later requests the layout attributes, you can be efficient and query the cache instead of recalculating them every time.
     var cache = [UICollectionViewLayoutAttributes]()
