@@ -56,6 +56,7 @@
 		FEC8012621723CF600584EE2 /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC8012521723CF600584EE2 /* TestCell.swift */; };
 		FECCA2A5216F7C6A00910A81 /* Tabbar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FECCA2A4216F7C6A00910A81 /* Tabbar.xcassets */; };
 		FED120F1217BBA27007F1A5F /* PublicHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED120F0217BBA27007F1A5F /* PublicHelpers.swift */; };
+		FED120F3217CD8A4007F1A5F /* GS+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED120F2217CD8A4007F1A5F /* GS+Array.swift */; };
 		FED6CAF3216CC91B005DBEDB /* GSSmallFotosGaleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAF2216CC91B005DBEDB /* GSSmallFotosGaleryCollectionView.swift */; };
 		FED6CAF5216CCB61005DBEDB /* GSFotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAF4216CCB61005DBEDB /* GSFotoCell.swift */; };
 		FED6CAF7216CD6CE005DBEDB /* GSAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAF6216CD6CE005DBEDB /* GSAddCell.swift */; };
@@ -115,6 +116,7 @@
 		FEC8012521723CF600584EE2 /* TestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
 		FECCA2A4216F7C6A00910A81 /* Tabbar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Tabbar.xcassets; sourceTree = "<group>"; };
 		FED120F0217BBA27007F1A5F /* PublicHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicHelpers.swift; sourceTree = "<group>"; };
+		FED120F2217CD8A4007F1A5F /* GS+Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+Array.swift"; sourceTree = "<group>"; };
 		FED6CAF2216CC91B005DBEDB /* GSSmallFotosGaleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSSmallFotosGaleryCollectionView.swift; sourceTree = "<group>"; };
 		FED6CAF4216CCB61005DBEDB /* GSFotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSFotoCell.swift; sourceTree = "<group>"; };
 		FED6CAF6216CD6CE005DBEDB /* GSAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSAddCell.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 				1867A79B2167913700278A92 /* GSPOP */,
 				18F5106E21772819006CE47F /* GS+CGSize.swift */,
 				1814A4E62179CE5500F64D85 /* GS+Int.swift */,
+				FED120F2217CD8A4007F1A5F /* GS+Array.swift */,
 			);
 			path = GSExtensions;
 			sourceTree = "<group>";
@@ -477,6 +480,7 @@
 				1814A4E92179D11B00F64D85 /* GSPinterestCell.swift in Sources */,
 				FED120F1217BBA27007F1A5F /* PublicHelpers.swift in Sources */,
 				FE7326EC216BF83F00FE3C45 /* GSVotingStackView.swift in Sources */,
+				FED120F3217CD8A4007F1A5F /* GS+Array.swift in Sources */,
 				FE91BEDA217140C2003B4430 /* GSInfoButton.swift in Sources */,
 				FE7326F1216C9B6C00FE3C45 /* GSDetailViewController.swift in Sources */,
 				FEC7F3CA2167B19400F9013E /* GSBaseViewController.swift in Sources */,

@@ -29,21 +29,29 @@ class GSPinterestCell: UICollectionViewCell, ReusableView {
         return label
     }()
     
+    let gradientLayer: CAGradientLayer = {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = .zero
+        gradientLayer.colors = [UIColor.black.withAlphaComponent(0.4).cgColor, UIColor.black.withAlphaComponent(0).cgColor]
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        gradientLayer.cornerRadius = GSSettings.ui.sizes.cornerRadius
+        return gradientLayer
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = GSSettings.ui.colors.backgroundWhite
         setupSubviews()
         setupContstraints()
         layer.cornerRadius = GSSettings.ui.sizes.cornerRadius
-//        layer.borderColor = UIColor.white.cgColor
-//        layer.borderWidth = 0
-		
-		//addGradient()
     }
     
     func setupSubviews() {
         addSubview(photoImageView)
         addSubview(titleLabel)
+        layer.addSublayer(gradientLayer)
+        bringSubviewToFront(titleLabel)
     }
     
     func setupContstraints() {
@@ -68,22 +76,16 @@ class GSPinterestCell: UICollectionViewCell, ReusableView {
 		if let title = data?.titel {
 			titleLabel.text = title
 		}
-		//titleLabel.text = "\(self.frame.width, self.frame.height)"
-//		delay(bySeconds: 0.1) {
-//			self.addGradient()
-//		}
-		
     }
-	
-	func addGradient() {
-		let gradientLayer = CAGradientLayer()
-		gradientLayer.colors = [UIColor.black.withAlphaComponent(0.3).cgColor, UIColor.black.withAlphaComponent(0).cgColor]
-		gradientLayer.startPoint = CGPoint(x: 1, y: 0)
-		gradientLayer.endPoint = CGPoint(x: 0, y: 1)
-		gradientLayer.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 100)
-		layer.addSublayer(gradientLayer)
-		gradientLayer.cornerRadius = GSSettings.ui.sizes.cornerRadius
-		bringSubviewToFront(titleLabel)
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let cellsFrame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
+        updateGradientLayer(frame: cellsFrame)
+    }
+    
+    func updateGradientLayer(frame: CGRect) {
+		gradientLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: 80)
 	}
     
     required init?(coder aDecoder: NSCoder) {

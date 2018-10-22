@@ -43,7 +43,7 @@ class GSCollectionView: UIView {
 		return collectionview
 	}()
 	
-	let square  = Datasource(titel: "Small", subtitle: "Subtitle", type: .square, size: nil)
+	let square  = Datasource(titel: "Square", subtitle: "Subtitle", type: .square, size: nil)
 	let port    = Datasource(titel: "Portrait", subtitle: "subtitle", type: .portrait, size: .portrait)
 	let land    = Datasource(titel: "landscape", subtitle: "subt", type: .landscape, size: .landscape)
 	var dataSource = [Datasource]()
@@ -102,7 +102,7 @@ class GSCollectionView: UIView {
 		layoutIfNeeded()
 	}
 	
-
+	
 	//MARK: Generate Methods
 	func getRandomItem() {
 		let randomNum = Int.random(in: 0 ..< remainingElements.count)
@@ -149,9 +149,9 @@ class GSCollectionView: UIView {
 				return Bool.random() ? .bigSquare : .smallSquare
 			}
 		}
-//        if lastItemSize == .smallSquare && secondLastItemSize == .smallSquare {
-//            return .bigSquare
-//        }
+		if lastItemSize == .smallSquare && secondLastItemSize == .smallSquare {
+			return .bigSquare
+		}
 		if secondLastItemSize == .landscape || secondLastItemSize == .bigSquare {
 			return .smallSquare
 		}
@@ -249,7 +249,7 @@ class GSCollectionView: UIView {
 		filterNextElementsOfDataSource(15)
 	}
 	
-	#warning("Remove this method")
+	#warning("Remove this method (printTypeOf)")
 	func printTypeOf(array: [Datasource]) {
 		print("_____")
 		for item in array {
@@ -271,6 +271,16 @@ extension GSCollectionView: UICollectionViewDelegate, UICollectionViewDataSource
 		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GSPinterestCell.reuseIdentifier, for: indexPath) as! GSPinterestCell
 		cell.configure(dataSource: addedElements[indexPath.row])
 		return cell
+	}
+	
+	func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+		
+//		let layoutAttributes = collectionViewLayout.layoutAttributesForItem(at: indexPath)
+//		guard let frame = layoutAttributes?.frame else { print("Error with retrieving cell's frame"); return }
+//		let cellsFrame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
+//		guard let gsCell = cell as? GSPinterestCell else { return }
+//		gsCell.addGradient(frame: cellsFrame)
+		
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
