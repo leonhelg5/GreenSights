@@ -10,7 +10,7 @@ import UIKit
 import Foundation
 
 struct GSSettings {
-    
+	
 	struct ui {
 		
 		struct sizes {
@@ -30,32 +30,28 @@ struct GSSettings {
 			static let tintColor                = UIColor.rgb(0, 110, 0, 1)
 			static let nightOrange              = UIColor.rgb(255, 149, 0, 1)
 		}
-		
-		struct helperIcons {
-			static let chevron = "chevronGray"
-		}
-		
+
 		struct tabbarItems {
 			static let tabbarBackground         = colors.elementBackgroundColor
 			static let selectedItemsTintColor   = colors.tintColor
 			static let unselectedItemsTintColor = UIColor.black//UIColor.darkGray
 			
-			static let homeSelected     = "home5_selected"
-			static let homeUnselected   = "home5_unselected"
-			static let searchSelected   = "search_selected"
-			static let searchUnselected = "search_unselected"
-			static let plusIcon         = "plusIconPDF"
-			static let mapSelected      = "map_selected"
-			static let mapUnselected    = "map8_unselected"
-			static let profileSelected      = "profile_unselected"
-			static let profileUnselected    = "profile_unselected"
+			static let homeSelected		= "home5_selected"
+			static let homeUnselected	= "home5_unselected"
+			static let searchSelected	= "search_selected"
+			static let searchUnselected	= "search_unselected"
+			static let plusIcon			= "plusIconPDF"
+			static let mapSelected		= "map_selected"
+			static let mapUnselected	= "map8_unselected"
+			static let profileSelected		= "profile_unselected"
+			static let profileUnselected	= "profile_unselected"
 		}
 		
 		struct navBarIcons {
-			static let starSelected     = "star_selected"
-			static let starUnselected   = "star_unselected"
-			static let infoSelected     = "info_selected"
-			static let infoUnselected   = "info_unselected"
+			static let starSelected		= "star_selected"
+			static let starUnselected	= "star_unselected"
+			static let infoSelected		= "info_selected"
+			static let infoUnselected	= "info_unselected"
 		}
 		
 		struct otherIcons {
@@ -63,6 +59,7 @@ struct GSSettings {
 			static let dotsVertical 	= "dot2_vertical"
 			static let voteLine 		= "line12"
 			static let addFriend 		= "addFriend"
+			static let friends			= "Friends"
 		}
 		
 		struct animations {

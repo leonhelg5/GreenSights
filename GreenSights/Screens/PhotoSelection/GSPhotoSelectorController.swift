@@ -9,7 +9,7 @@
 import UIKit
 
 class GSPhotoSelectorController: GSBaseViewController {
-    
+	
 	let containerView = GSPhotoSelectorCollectionView()
 	
 	override func viewDidLoad() {
@@ -20,8 +20,8 @@ class GSPhotoSelectorController: GSBaseViewController {
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        containerView.parentVCDidAppear()
+		super.viewDidAppear(animated)
+		containerView.parentVCDidAppear()
 	}
 	
 	func setupSubview() {
@@ -39,7 +39,6 @@ class GSPhotoSelectorController: GSBaseViewController {
 	
 	func setupNavBar() {
 		navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-		
 		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(handleNext))
 	}
 	

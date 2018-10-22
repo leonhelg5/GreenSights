@@ -36,7 +36,7 @@ class GSCollectionView: UIView {
 		collectionview.showsHorizontalScrollIndicator   = false
 		collectionview.backgroundColor                  = .white
 		collectionview.bounces                          = true
-		collectionview.allowsSelection                  = false
+		collectionview.allowsSelection                  = true
 		collectionview.delegate                         = self
 		collectionview.dataSource                       = self
 		collectionview.register(GSPinterestCell.self, forCellWithReuseIdentifier: GSPinterestCell.reuseIdentifier)
@@ -249,14 +249,6 @@ class GSCollectionView: UIView {
 		filterNextElementsOfDataSource(15)
 	}
 	
-	#warning("Remove this method (printTypeOf)")
-	func printTypeOf(array: [Datasource]) {
-		print("_____")
-		for item in array {
-			print(item.type)
-		}
-	}
-	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
@@ -273,18 +265,15 @@ extension GSCollectionView: UICollectionViewDelegate, UICollectionViewDataSource
 		return cell
 	}
 	
-	func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-		
-//		let layoutAttributes = collectionViewLayout.layoutAttributesForItem(at: indexPath)
-//		guard let frame = layoutAttributes?.frame else { print("Error with retrieving cell's frame"); return }
-//		let cellsFrame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
-//		guard let gsCell = cell as? GSPinterestCell else { return }
-//		gsCell.addGradient(frame: cellsFrame)
-		
-	}
-	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		print("cell clicked")
+		guard let cell = collectionView.cellForItem(at: indexPath) as? GSPinterestCell else { return }
+		cell.isFlipped.toggle()
+		if !cell.isFlipped {
+			cell.flip(toRight: false, flipView: cell.contentView, viewsToHide: [cell.friendsImageView], viewsToShow: [cell.titleLabel])
+		} else {
+			cell.flip(toRight: true, flipView: cell.contentView, viewsToHide: [cell.titleLabel], viewsToShow: [cell.friendsImageView])
+		}
+		
 	}
 }
 
