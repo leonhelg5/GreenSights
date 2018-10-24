@@ -126,13 +126,20 @@ class GSCollectionView: UIView {
 		copyOfSelectedViewHeight.isActive 	= true
 		copyOfSelectedViewMidX.isActive 	= true
 		copyOfSelectedViewMidY.isActive 	= true
-
 		self.blackView.isHidden = false
-		UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: {
+		UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+			guard let self = self else { return }
 			self.layoutIfNeeded()
 			self.blackView.alpha = 0.7
+
 		}) { (completed) in
 			//TODO
+		}
+		
+		UIView.transition(with: copyOfSelectedView, duration: 0.5, options: [.transitionFlipFromRight, .showHideTransitionViews], animations: {
+			
+		}) { (completed) in
+			
 		}
 	}
 	
@@ -179,16 +186,8 @@ extension GSCollectionView: UICollectionViewDelegate, UICollectionViewDataSource
 		let translatedFrame = collectionView.convert(theAttributes.frame, to: collectionView.superview)
 		frameOfSelectedView = translatedFrame
 		lastClickedCell = cell
-		lastClickedCell.isHidden.toggle()
+		lastClickedCell.isHidden = true
 		centerSelectedCell(screenshot: cellsView, frame: translatedFrame, size: size)
-		
-		
-//		cell.isFlipped.toggle()
-//		if !cell.isFlipped {
-//			cell.flip(toRight: false, flipView: cell.contentView, viewsToHide: [cell.friendsImageView], viewsToShow: [cell.titleLabel])
-//		} else {
-//			cell.flip(toRight: true, flipView: cell.contentView, viewsToHide: [cell.titleLabel], viewsToShow: [cell.friendsImageView])
-//		}
 	}
 }
 

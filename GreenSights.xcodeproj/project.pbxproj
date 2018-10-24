@@ -100,7 +100,7 @@
 		FE7326F2216C9E4D00FE3C45 /* GSDetailStructure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSDetailStructure.swift; sourceTree = "<group>"; };
 		FE7326F4216CA37200FE3C45 /* GSDetailScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSDetailScrollView.swift; sourceTree = "<group>"; usesTabs = 1; };
 		FE91BECD2170C4C1003B4430 /* GSPhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSPhotoSelectorController.swift; sourceTree = "<group>"; usesTabs = 1; };
-		FE91BECF2170C534003B4430 /* GSPhotoSelectorCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSPhotoSelectorCollectionView.swift; sourceTree = "<group>"; };
+		FE91BECF2170C534003B4430 /* GSPhotoSelectorCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSPhotoSelectorCollectionView.swift; sourceTree = "<group>"; usesTabs = 1; };
 		FE91BED12170D197003B4430 /* GSPhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSPhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		FE91BED32170D42B003B4430 /* GSPhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSPhotoSelectorCell.swift; sourceTree = "<group>"; usesTabs = 1; };
 		FE91BED521711A09003B4430 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };

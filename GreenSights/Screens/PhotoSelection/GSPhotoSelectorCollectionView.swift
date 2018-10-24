@@ -82,20 +82,14 @@ class GSPhotoSelectorCollectionView: UIView {
 		let allPhotos = PHAsset.fetchAssets(with: .image, options: getAssetsFetchOptions())
 		
 		DispatchQueue.global(qos: .background).async { [weak self] in
-            guard let self = self else {
-                return
-            }
+			guard let self = self else { return }
 			allPhotos.enumerateObjects({ [weak self] (asset, count, stop) in
-                guard let self = self else {
-                    return
-                }
+				guard let self = self else { return }
 				let imageManager = PHImageManager.default()
 				let options = PHImageRequestOptions()
 				options.isSynchronous = true
 				imageManager.requestImage(for: asset, targetSize: self.itemSize, contentMode: .aspectFit, options: options, resultHandler: { [weak self] (image, info) in
-                    guard let self = self else {
-                        return
-                    }
+					guard let self = self else { return }
 					if let image = image {
 						self.images.append(image)
 						self.assets.append(asset)
