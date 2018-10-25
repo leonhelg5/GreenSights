@@ -18,7 +18,7 @@ class GSDetailScrollView: UIScrollView {
 	weak var delegateDV: GSDetailScrollViewDelegate?
 	
 	//MARK: - GUI Objects
-	var heightOfContent = NSLayoutConstraint()
+	var containerViewHeightConstraint = NSLayoutConstraint()
 	let containerView = UIView()
 	
 	let titleLabel: UILabel = {
@@ -82,7 +82,7 @@ class GSDetailScrollView: UIScrollView {
 		return imageview
 	}()
 	
-	var heightOfDetailsTableView = NSLayoutConstraint()
+	var detailsTableViewHeightConstraint = NSLayoutConstraint()
 	let detailsTableView = GSAltDetailTableView()
 	let fotosCollectionView = GSSmallFotosGaleryCollectionView()
 	
@@ -102,8 +102,8 @@ class GSDetailScrollView: UIScrollView {
 	//MARK: - Setup
 	func setupContainerView() {
 		self.addSubview(containerView)
-		heightOfContent = containerView.heightAnchor.constraint(equalToConstant: 2000)
-		heightOfContent.isActive = true
+		containerViewHeightConstraint = containerView.heightAnchor.constraint(equalToConstant: 2000)
+		containerViewHeightConstraint.isActive = true
 		containerView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: 0, height: 0)
 		containerView.widthAnchor.constraint(equalTo: self.frameLayoutGuide.widthAnchor).isActive = true
 	}
@@ -120,16 +120,14 @@ class GSDetailScrollView: UIScrollView {
 		containerView.addSubview(mapActivityIndicatorView)
 		
 		detailsTableView.delegate = self
-		//TODO: naming: detailsTableViewHeightConstraint
-		heightOfDetailsTableView = detailsTableView.heightAnchor.constraint(equalToConstant: calcHeightOfDetailTableView())
-		heightOfDetailsTableView.isActive = true
+		detailsTableViewHeightConstraint = detailsTableView.heightAnchor.constraint(equalToConstant: calcHeightOfDetailTableView())
+		detailsTableViewHeightConstraint.isActive = true
 	}
 	
 	func setupContstraints() {
 		titleLabel.anchor(top: containerView.topAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: GSSettings.ui.sizes.sidePadding, paddingLeading: GSSettings.ui.sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.ui.sizes.sidePadding, width: 0, height: 0)
 		
-		locationLabel.anchor(top: titleLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 0, paddingLeading: GSSettings.ui.sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.ui.sizes.sidePadding, width: 0, height: 0)
-		//TODO maybe set width
+		locationLabel.anchor(top: titleLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: addFriendView.leadingAnchor, paddingTop: 0, paddingLeading: GSSettings.ui.sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.ui.sizes.sidePadding, width: 0, height: 0)
 		
 		subtitleLabel.anchor(top: locationLabel.bottomAnchor, leading: containerView.leadingAnchor, bottom: nil, trailing: containerView.trailingAnchor, paddingTop: 20, paddingLeading: GSSettings.ui.sizes.sidePadding, paddingBottom: 0, paddingTrailing: GSSettings.ui.sizes.sidePadding, width: 0, height: 0)
 		
@@ -150,7 +148,7 @@ class GSDetailScrollView: UIScrollView {
 	}
 	
 	@objc func updateHeightOfDetailTableView() {
-		heightOfDetailsTableView.constant = calcHeightOfDetailTableView()
+		detailsTableViewHeightConstraint.constant = calcHeightOfDetailTableView()
 		UIView.animate(withDuration:0.4, animations: {
 			self.layoutIfNeeded()
 		}) { (result: Bool) in

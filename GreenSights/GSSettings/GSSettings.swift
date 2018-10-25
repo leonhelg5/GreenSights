@@ -60,6 +60,9 @@ struct GSSettings {
 			static let voteLine 		= "line12"
 			static let addFriend 		= "addFriend"
 			static let friends			= "Friends"
+			static let squareIcon		= "SquareIcon"
+			static let portraitIcon 	= "PortraitIcon"
+			static let landscapeIcon 	= "LandscapeIcon"
 		}
 		
 		struct animations {

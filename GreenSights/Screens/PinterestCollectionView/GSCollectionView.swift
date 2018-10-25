@@ -81,14 +81,14 @@ class GSCollectionView: UIView {
 	}
 	
 	func setupSubviews() {
-		let gestureRec = UITapGestureRecognizer(target: self, action: #selector(putCellBackToOrigin))
 		addSubview(collectionView)
-		collectionViewLayout.delegate = self
 		addSubview(blackView)
+		addSubview(copyOfSelectedView)
+		collectionViewLayout.delegate = self
+		let gestureRec = UITapGestureRecognizer(target: self, action: #selector(putCellBackToOrigin))
 		blackView.addGestureRecognizer(gestureRec)
 		blackView.alpha = 0
 		blackView.isHidden = true
-		addSubview(copyOfSelectedView)
 		copyOfSelectedView.isHidden = true
 	}
 	
@@ -127,20 +127,32 @@ class GSCollectionView: UIView {
 		copyOfSelectedViewMidX.isActive 	= true
 		copyOfSelectedViewMidY.isActive 	= true
 		self.blackView.isHidden = false
-		UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-			guard let self = self else { return }
-			self.layoutIfNeeded()
-			self.blackView.alpha = 0.7
-
-		}) { (completed) in
-			//TODO
-		}
+		let duration: TimeInterval = 0.5
 		
-		UIView.transition(with: copyOfSelectedView, duration: 0.5, options: [.transitionFlipFromRight, .showHideTransitionViews], animations: {
-			
-		}) { (completed) in
-			
+		let animator = UIViewPropertyAnimator(duration: duration, curve: .easeOut)
+		animator.addAnimations {
+			UIView.animateKeyframes(withDuration: duration, delay: 0, animations: {
+				self.layoutIfNeeded()
+				self.blackView.alpha = 0.7
+				
+//				UIView.addKeyframe(withRelativeStartTime: 0.25, relativeDuration: 0.75) {
+//					self.copyOfSelectedView.layer.transform = CATransform3DMakeRotation(.pi, 0, 1, 0)
+//				}
+			}, completion: nil)
 		}
+		animator.startAnimation()
+		
+//		UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+//			guard let self = self else { return }
+//			self.layoutIfNeeded()
+//			self.blackView.alpha = 0.7
+//		})
+//		UIView.animate(withDuration: 0.5, animations: { [weak self] in
+//			guard let self = self else { return }
+//			self.copyOfSelectedView.layer.transform = CATransform3DMakeRotation(.pi, 0, 1, 0)
+//		}) { (completed) in
+//			//TODO
+//		}
 	}
 	
 	@objc func putCellBackToOrigin() {
@@ -177,7 +189,6 @@ extension GSCollectionView: UICollectionViewDelegate, UICollectionViewDataSource
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		
 		guard let cell = collectionView.cellForItem(at: indexPath) as? GSPinterestCell else { return }
 		guard let cellsView = cell.screenshotMyself() else { return }
 		guard let size = cell.data?.size else { return }

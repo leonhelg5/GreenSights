@@ -104,7 +104,7 @@ extension GSDetailViewController: GSDetailScrollViewDelegate {
 		let heightOfAllObjects:CGFloat = 2000
 		containerScrollView.contentSize = CGSize(width: self.view.frame.width, height: heightOfAllObjects)
 		containerScrollView.layoutIfNeeded()
-		containerScrollView.heightOfContent.constant = heightOfAllObjects
+		containerScrollView.containerViewHeightConstraint.constant = heightOfAllObjects
 		containerScrollView.containerView.layoutIfNeeded()
 	}
 	

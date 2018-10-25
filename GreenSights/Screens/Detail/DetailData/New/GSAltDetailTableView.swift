@@ -103,7 +103,6 @@ class GSAltDetailTableView: UIView {
 		tableView.endUpdates()
 	}
 	
-	//TODO: create variable for indexpath instead of function
 	func createIndexPath() -> [IndexPath] {
 		var indexPaths = [IndexPath]()
 		for row in numberOfRowsWhenUnexpanded..<titles.count {
