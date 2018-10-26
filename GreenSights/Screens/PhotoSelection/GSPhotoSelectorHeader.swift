@@ -158,22 +158,16 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 		photoImageViewWidthConstraint.constant = width
 		photoImageViewHeightConstraint.constant = height
 		updateConstraints()
+		layoutSubviews()
 	}
 	
 	fileprivate func updateScrollViewContentSize() {
 		let contentWidth 	= photoImageViewWidthConstraint.constant //imageSize.width - (photoScrollViewTopConstraint.constant - photoScrollViewBottomConstraint.constant)
 		let contentHeight 	= photoImageViewHeightConstraint.constant//imageSize.height - (photoScrollViewLeadingConstraint.constant - photoScrollViewTrailingConstraint.constant)
 		let offset = CGPoint(x: (contentWidth - photoScrollView.frame.width) * 0.5 - photoScrollViewLeadingConstraint.constant, y: (contentHeight - photoScrollView.frame.height) * 0.5 - photoScrollViewTopConstraint.constant)
-		
-		print("_____")
-		print(imageSize)
-		print(photoScrollView.frame.width, photoScrollView.frame.width)
-		print(contentWidth, contentHeight)
-		print(offset)
-		
-		layoutIfNeeded()
+
 		photoScrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
-		photoScrollView.setContentOffset(offset, animated: true)
+		photoScrollView.setContentOffset(offset, animated: false)
 		layoutIfNeeded()
 	}
 	
