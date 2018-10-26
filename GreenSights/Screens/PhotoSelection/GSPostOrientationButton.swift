@@ -17,10 +17,12 @@ class GSPostOrientationButton: UIButton {
     convenience init(iconName: String) {
         self.init()
         self.setImage(UIImage(named: iconName)?.withRenderingMode(.alwaysOriginal), for: .normal)
+        self.imageEdgeInsets = .zero
+        self.imageView?.fixHeightAndWidth(width: 40, height: 40)
     }
     
     override var intrinsicContentSize: CGSize {
-        return CGSize(width: 45, height: 45)
+        return CGSize(width: 40, height: 40)
     }
     
     required init?(coder aDecoder: NSCoder) {

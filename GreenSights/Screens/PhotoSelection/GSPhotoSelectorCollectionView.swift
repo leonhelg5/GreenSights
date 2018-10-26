@@ -144,7 +144,6 @@ extension GSPhotoSelectorCollectionView: UICollectionViewDataSource {
 			}
 		}
 		self.header = header
-		header.becomeFirstResponder()
 		return header
 	}
 	
