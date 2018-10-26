@@ -146,8 +146,13 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 			height = frame.height
 			width = height * aspectRatio
 		default:
-			width = imageSize.width
-			height = imageSize.height
+			if imageIsLandscape {
+				height = frame.height
+				width = height * aspectRatio
+			} else {
+				width = frame.width
+				height = width / aspectRatio
+			}
 		}
 		setNeedsUpdateConstraints()
 		photoImageViewWidthConstraint.constant = width
@@ -159,7 +164,6 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 		let contentWidth 	= photoImageViewWidthConstraint.constant //imageSize.width - (photoScrollViewTopConstraint.constant - photoScrollViewBottomConstraint.constant)
 		let contentHeight 	= photoImageViewHeightConstraint.constant//imageSize.height - (photoScrollViewLeadingConstraint.constant - photoScrollViewTrailingConstraint.constant)
 		let offset = CGPoint(x: (contentWidth - photoScrollView.frame.width) * 0.5 - photoScrollViewLeadingConstraint.constant, y: (contentHeight - photoScrollView.frame.height) * 0.5 - photoScrollViewTopConstraint.constant)
-		let offsetSquare = CGPoint(x: (contentWidth - photoScrollView.frame.width) * 0.5, y: (contentHeight - photoScrollView.frame.height) * 0.5)
 		
 		print("_____")
 		print(imageSize)
@@ -169,12 +173,7 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 		
 		layoutIfNeeded()
 		photoScrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
-		if currentOrientation != .square {
-			photoScrollView.setContentOffset(offset, animated: true)
-		} else {
-			photoScrollView.setContentOffset(offsetSquare, animated: true)
-		}
-		
+		photoScrollView.setContentOffset(offset, animated: true)
 		layoutIfNeeded()
 	}
 	
@@ -249,7 +248,7 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 			photoScrollView.zoomScale = 1
 		default:
 			photoScrollView.minimumZoomScale = maxScale
-			photoScrollView.zoomScale = 1
+			photoScrollView.zoomScale = minScale
 		}
 	}
 	
