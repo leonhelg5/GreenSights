@@ -10,9 +10,6 @@ import UIKit
 
 class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 	
-	var currentOrientation: cellType = .square
-	var imageIsLandscape = true
-	
 	var photoScrollViewTopConstraint 		= NSLayoutConstraint()
 	var photoScrollViewBottomConstraint 	= NSLayoutConstraint()
 	var photoScrollViewLeadingConstraint 	= NSLayoutConstraint()
@@ -29,10 +26,11 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 	
 	var imageSize = CGSize(width: 500, height: 500) {
 		didSet {
-			imageIsLandscape = imageSize.width > imageSize.height
+			adjustedImageSize = imageSize
 			startSizeUpdateSequence()
 		}
 	}
+	var adjustedImageSize = CGSize(width: 500, height: 500)
 	
 	var photoImageViewHeightConstraint = NSLayoutConstraint()
 	var photoImageViewWidthConstraint = NSLayoutConstraint()
@@ -112,19 +110,24 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 		resetButtons()
 		resetOrientationViews()
 		resetOrientationConstraints()
+		adjustedImageSize = imageSize
 		sender.isSelected = true
 		switch sender {
 		case landscapeButton:
-			currentOrientation = .landscape
 			setLandscapeMode()
+			//adjustedImageSize.height = imageSize.height - 2 * (imageSize.height / 5)
 		case portraitButton:
-			currentOrientation = .portrait
 			setPortraitMode()
+			//adjustedImageSize.width = imageSize.width - 2 * (imageSize.width / 5)
 		default:
-			currentOrientation = .square
-			photoScrollView.contentInset = .zero
+			break
 		}
 		startSizeUpdateSequence()
+		print(photoImageView.center)
+		print(photoScrollView.center)
+		print(photoScrollView.contentSize.width)
+		photoImageView.center = CGPoint(x: photoScrollView.contentSize.width / 2 - frame.width / 5, y: photoScrollView.contentSize.height / 2 - frame.height / 5)
+		print(photoImageView.center)
 	}
 	
 	fileprivate func startSizeUpdateSequence() {
@@ -133,51 +136,35 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 		layoutSubviews()
 	}
 	
+	fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
+		let widthScale = size.width / imageSize.width
+		let heightScale = size.height / imageSize.height
+		let minScale = min(widthScale, heightScale)
+		let maxScale = max(widthScale, heightScale)
+		
+		photoScrollView.minimumZoomScale = maxScale
+		photoScrollView.maximumZoomScale = maxScale * 2.5
+		photoScrollView.zoomScale = maxScale
+	}
+	
 	fileprivate func updateImageConstraints() {
-		var width: CGFloat 	= 0
-		var height: CGFloat = 0
-		let aspectRatio = imageSize.width / imageSize.height
-		switch currentOrientation {
-		case .landscape:
-			width = frame.width
-			height = width / aspectRatio
-		case .portrait:
-			height = frame.height
-			width = height * aspectRatio
-		default:
-			if imageIsLandscape {
-				height = frame.height
-				width = height * aspectRatio
-			} else {
-				width = frame.width
-				height = width / aspectRatio
-			}
-		}
 		setNeedsUpdateConstraints()
-		photoImageViewWidthConstraint.constant = width
-		photoImageViewHeightConstraint.constant = height
+		photoImageViewWidthConstraint.constant = imageSize.width
+		photoImageViewHeightConstraint.constant = imageSize.height
 		updateConstraints()
-		layoutSubviews()
 	}
 	
 	fileprivate func updateScrollViewContentSize() {
-		let contentWidth 	= photoImageViewWidthConstraint.constant //imageSize.width - (photoScrollViewTopConstraint.constant - photoScrollViewBottomConstraint.constant)
-		let contentHeight 	= photoImageViewHeightConstraint.constant//imageSize.height - (photoScrollViewLeadingConstraint.constant - photoScrollViewTrailingConstraint.constant)
+		setNeedsLayout()
+		let contentWidth 	= photoImageView.frame.width - (photoScrollViewLeadingConstraint.constant + -photoScrollViewTrailingConstraint.constant)
+		let contentHeight 	= photoImageView.frame.height - (photoScrollViewTopConstraint.constant + -photoScrollViewBottomConstraint.constant)
 		photoScrollView.contentSize = CGSize(width: contentWidth, height: contentHeight)
-		layoutIfNeeded()
-		centerImageInScrollView(contentWidth: contentWidth, contentHeight: contentHeight)
-	}
-	
-	fileprivate func centerImageInScrollView(contentWidth: CGFloat, contentHeight: CGFloat) {
-		let offset = CGPoint(x: (contentWidth - photoScrollView.frame.width) * 0.5 - photoScrollViewLeadingConstraint.constant, y: (contentHeight - photoScrollView.frame.height) * 0.5 - photoScrollViewTopConstraint.constant)
-		photoScrollView.setContentOffset(offset, animated: false)
 		layoutIfNeeded()
 	}
 	
 	@objc fileprivate func shouldPrintSizes() {
 		print("_________")
 		print("ImageFrame: ",photoImageView.frame)
-		print("Imagesize: ",imageSize)
 		print("ScrollviewFrame: ",photoScrollView.frame)
 		print("ContentSize: ",photoScrollView.contentSize)
 	}
@@ -196,57 +183,29 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 	}
 	
 	fileprivate func resetOrientationConstraints() {
-		setNeedsUpdateConstraints()
 		photoScrollViewTopConstraint.constant 		= 0
 		photoScrollViewBottomConstraint.constant 	= 0
 		photoScrollViewLeadingConstraint.constant 	= 0
 		photoScrollViewTrailingConstraint.constant 	= 0
-		updateConstraints()
 	}
 	
 	fileprivate func setLandscapeMode() {
 		landscapeSideUp.isHidden 	= false
 		landscapeSideDown.isHidden 	= false
-		setNeedsUpdateConstraints()
 		photoScrollViewTopConstraint.constant 		= orientationWidthHeight
 		photoScrollViewBottomConstraint.constant 	= -orientationWidthHeight
-		updateConstraints()
-		photoScrollView.contentInset = UIEdgeInsets(top: orientationWidthHeight, left: 0, bottom: -orientationWidthHeight, right: 0)
 	}
 	
 	fileprivate func setPortraitMode() {
 		portraitSideRight.isHidden 	= false
 		portraitSideLeft.isHidden 	= false
-		setNeedsUpdateConstraints()
 		photoScrollViewLeadingConstraint.constant 	= orientationWidthHeight
 		photoScrollViewTrailingConstraint.constant 	= -orientationWidthHeight
-		updateConstraints()
-		photoScrollView.contentInset = UIEdgeInsets(top: 0, left: orientationWidthHeight, bottom: 0, right: -orientationWidthHeight)
 	}
 	
 	override func layoutSubviews() {
 		super.layoutSubviews()
 		updateMinZoomScaleForSize(frame.size)
-	}
-	
-	fileprivate func updateMinZoomScaleForSize(_ size: CGSize) {
-		let widthScale = size.width / photoImageViewWidthConstraint.constant//imageSize.width
-		let heightScale = size.height / photoImageViewHeightConstraint.constant//imageSize.height
-		let minScale = min(widthScale, heightScale)
-		let maxScale = max(widthScale, heightScale)
-		
-		photoScrollView.minimumZoomScale = 1
-		photoScrollView.maximumZoomScale = maxScale * 2.5
-		
-		switch currentOrientation {
-		case .landscape:
-			photoScrollView.zoomScale = 1
-		case .portrait:
-			photoScrollView.zoomScale = 1
-		default:
-			photoScrollView.minimumZoomScale = maxScale
-			photoScrollView.zoomScale = maxScale
-		}
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
@@ -259,11 +218,9 @@ extension GSPhotoSelectorHeader: UIScrollViewDelegate {
 		return self.photoImageView
 	}
 	
-	func scrollViewDidZoom(_ scrollView: UIScrollView) {
-		
-		return
-		let offsetX = max((scrollView.bounds.size.width - scrollView.contentSize.width) * CGFloat(0.5), 0.0)
-		let offsetY = max((scrollView.bounds.size.height - scrollView.contentSize.height) * CGFloat(0.5), 0.0)
-		photoImageView.center = CGPoint(x: scrollView.contentSize.width * 0.5 + offsetX, y: scrollView.contentSize.height * 0.5 + offsetY)
-	}
+//	func scrollViewDidZoom(_ scrollView: UIScrollView) {
+//		let offsetX = max((scrollView.bounds.size.width - scrollView.contentSize.width) * CGFloat(0.5), 0.0)
+//		let offsetY = max((scrollView.bounds.size.height - scrollView.contentSize.height) * CGFloat(0.5), 0.0)
+//		photoImageView.center = CGPoint(x: scrollView.contentSize.width * 0.5 + offsetX, y: scrollView.contentSize.height * 0.5 + offsetY)
+//	}
 }
