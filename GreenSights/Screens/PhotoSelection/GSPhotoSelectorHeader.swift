@@ -19,6 +19,7 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 	var photoScrollViewTrailingConstraint 	= NSLayoutConstraint()
 	lazy var photoScrollView: UIScrollView = {
 		let scrollView = UIScrollView()
+		scrollView.backgroundColor = UIColor.black
 		scrollView.bounces = false
 		scrollView.showsVerticalScrollIndicator = false
 		scrollView.showsHorizontalScrollIndicator = false
@@ -48,17 +49,17 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
     let landscapeButton 	= GSPostOrientationButton(iconName: GSSettings.ui.otherIcons.landscapeIcon)
 	var buttons 			= [GSPostOrientationButton]()
 	
-	let landscapeSideUp 	= UIView()
-	let landscapeSideDown 	= UIView()
-	let portraitSideLeft 	= UIView()
-	let portraitSideRight 	= UIView()
+	let landscapeSideUp 	= UIVisualEffectView()
+	let landscapeSideDown 	= UIVisualEffectView()
+	let portraitSideLeft 	= UIVisualEffectView()
+	let portraitSideRight 	= UIVisualEffectView()
 	
 	var orientationWidthHeight: CGFloat = 80
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		self.clipsToBounds = true
-		self.backgroundColor = GSSettings.ui.colors.backgroundWhite
+		self.backgroundColor = UIColor.black//GSSettings.ui.colors.backgroundWhite
 		buttons = [squareButton, portraitButton, landscapeButton]
 		setupSubviews()
 		setupContstraints()
@@ -70,10 +71,10 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 		photoScrollView.addSubview(photoImageView)
 		for view in [landscapeSideUp, landscapeSideDown, portraitSideLeft, portraitSideRight] {
 			addSubview(view)
-			view.backgroundColor = .white
 			view.isHidden = true
 			view.isUserInteractionEnabled = false
 			view.alpha = 0.8
+			view.effect = UIBlurEffect(style: .dark)
 		}
 		for button in buttons {
 			self.addSubview(button)
@@ -260,7 +261,6 @@ extension GSPhotoSelectorHeader: UIScrollViewDelegate {
 	}
 	
 	func scrollViewDidZoom(_ scrollView: UIScrollView) {
-		
 		return
 		let offsetX = max((scrollView.bounds.size.width - scrollView.contentSize.width) * CGFloat(0.5), 0.0)
 		let offsetY = max((scrollView.bounds.size.height - scrollView.contentSize.height) * CGFloat(0.5), 0.0)
