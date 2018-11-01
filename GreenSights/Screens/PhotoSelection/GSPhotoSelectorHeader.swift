@@ -61,9 +61,9 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 		self.clipsToBounds = true
 		self.backgroundColor = UIColor.black//GSSettings.ui.colors.backgroundWhite
 		buttons = [squareButton, portraitButton, landscapeButton]
+		orientationWidthHeight = frame.size.width / 5
 		setupSubviews()
 		setupContstraints()
-		orientationWidthHeight = frame.width / 5
 	}
 	
 	func setupSubviews() {
@@ -75,6 +75,8 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 			view.isUserInteractionEnabled = false
 			view.alpha = 0.8
 			view.effect = UIBlurEffect(style: .dark)
+			view.layer.borderWidth = 1
+			view.layer.borderColor = UIColor.white.cgColor
 		}
 		for button in buttons {
 			self.addSubview(button)
@@ -99,14 +101,15 @@ class GSPhotoSelectorHeader: UICollectionViewCell, ReusableView {
 		squareButton.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: portraitButton.leadingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: padding, paddingTrailing: padding, width: 40, height: 40)
 		landscapeButton.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: squareButton.leadingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: padding, paddingTrailing: padding, width: 40, height: 40)
 		
-		landscapeSideUp.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: 0, height: 0)
-		landscapeSideDown.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: 0, height: 0)
-		landscapeSideUp.heightAnchor.constraint(equalToConstant: orientationWidthHeight).isActive = true
-		landscapeSideDown.heightAnchor.constraint(equalToConstant: orientationWidthHeight).isActive = true
-		portraitSideLeft.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: 0, height: 0)
-		portraitSideRight.anchor(top: topAnchor, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: 0, height: 0)
-		portraitSideLeft.widthAnchor.constraint(equalToConstant: orientationWidthHeight).isActive = true
-		portraitSideRight.widthAnchor.constraint(equalToConstant: orientationWidthHeight).isActive = true
+		let negativeOffset: CGFloat = -2
+		landscapeSideUp.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, paddingTop: negativeOffset, paddingLeading: negativeOffset, paddingBottom: 0, paddingTrailing: negativeOffset, width: 0, height: 0)
+		landscapeSideDown.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: 0, paddingLeading: negativeOffset, paddingBottom: negativeOffset, paddingTrailing: negativeOffset, width: 0, height: 0)
+		portraitSideLeft.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, paddingTop: negativeOffset, paddingLeading: negativeOffset, paddingBottom: negativeOffset, paddingTrailing: 0, width: 0, height: 0)
+		portraitSideRight.anchor(top: topAnchor, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, paddingTop: negativeOffset, paddingLeading: 0, paddingBottom: negativeOffset, paddingTrailing: negativeOffset, width: 0, height: 0)
+		landscapeSideUp.heightAnchor.constraint(equalToConstant: orientationWidthHeight - 2*negativeOffset).isActive = true
+		landscapeSideDown.heightAnchor.constraint(equalToConstant: orientationWidthHeight - 2*negativeOffset).isActive = true
+		portraitSideLeft.widthAnchor.constraint(equalToConstant: orientationWidthHeight - 2*negativeOffset).isActive = true
+		portraitSideRight.widthAnchor.constraint(equalToConstant: orientationWidthHeight - 2*negativeOffset).isActive = true
 	}
 	
 	@objc func handleOrientationTap(sender: GSPostOrientationButton) {
@@ -261,6 +264,7 @@ extension GSPhotoSelectorHeader: UIScrollViewDelegate {
 	}
 	
 	func scrollViewDidZoom(_ scrollView: UIScrollView) {
+		//TODO: Make Image centered when its (reversed) zooming
 		return
 		let offsetX = max((scrollView.bounds.size.width - scrollView.contentSize.width) * CGFloat(0.5), 0.0)
 		let offsetY = max((scrollView.bounds.size.height - scrollView.contentSize.height) * CGFloat(0.5), 0.0)

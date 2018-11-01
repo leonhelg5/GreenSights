@@ -134,6 +134,7 @@ extension GSPhotoSelectorCollectionView: UICollectionViewDataSource {
 				let selectedAsset = self.assets[index]
 				let imageManager = PHImageManager.default()
 				let targetSize = CGSize(width: self.screenWidth, height: self.screenWidth)
+				print(targetSize)
 				imageManager.requestImage(for: selectedAsset, targetSize: targetSize, contentMode: .default, options: nil) { (image, info) in
 					header.photoImageView.image = image
 					self.selectedImage = image
