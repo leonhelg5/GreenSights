@@ -83,7 +83,7 @@ class GSDetailScrollView: UIScrollView {
 	}()
 	
 	var detailsTableViewHeightConstraint = NSLayoutConstraint()
-	let detailsTableView = GSAltDetailTableView()
+	let detailsTableView = GSTwoDetailTableView()
 	let fotosCollectionView = GSSmallFotosGaleryCollectionView()
 	
 	//MARK: -
@@ -149,7 +149,8 @@ class GSDetailScrollView: UIScrollView {
 	
 	@objc func updateHeightOfDetailTableView() {
 		detailsTableViewHeightConstraint.constant = calcHeightOfDetailTableView()
-		UIView.animate(withDuration:0.4, animations: {
+		UIView.animate(withDuration:0.4, animations: { [weak self] in
+			guard let self = self else { return }
 			self.layoutIfNeeded()
 		}) { (result: Bool) in
 			if self.detailsTableView.currentNumberOfRows == self.detailsTableView.numberOfRowsWhenUnexpanded {
@@ -163,14 +164,57 @@ class GSDetailScrollView: UIScrollView {
 		return detailsTableView.headerHeight + detailsTableView.footerHeight + CGFloat(detailsTableView.currentNumberOfRows) * detailsTableView.rowHeight
 	}
 	
+	func showVotingView() {
+		if let keyWindow = UIApplication.shared.keyWindow {
+			let votingView = GSVotingView()
+			votingView.tag = 42
+			keyWindow.rootViewController?.view.addSubview(votingView) //tabbarcontroller
+			votingView.delegate = self
+			votingView.frame = keyWindow.frame
+			votingView.alpha = 0
+			UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+				votingView.frame = keyWindow.frame
+				votingView.alpha = 1
+			}, completion: { (completedAnimation) in
+				UIApplication.shared.setStatusBarHidden(true, with: .fade)
+				keyWindow.bringSubviewToFront(votingView)
+			})
+			DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+				votingView.viewDidAppear()
+			}
+		}
+	}
+	
+	func hideVotingView() {
+		if let keyWindow = UIApplication.shared.keyWindow {
+			let votingView = keyWindow.rootViewController?.view.viewWithTag(42)
+			UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+				votingView?.alpha = 0
+			}, completion: { (completedAnimation) in
+				votingView?.removeFromSuperview()
+			})
+		}
+	}
+	
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 }
 
 extension GSDetailScrollView: altDetailsTableViewDelegate {
+	func detailRowPressed(index: Int) {
+		showVotingView()
+	}
 	
 	func needsToUpdateDetailsTableViewHeight() {
 		updateHeightOfDetailTableView()
 	}
+}
+
+extension GSDetailScrollView: GSVotingViewDelegate {
+	func dismissVotingView() {
+		hideVotingView()
+	}
+	
+	
 }

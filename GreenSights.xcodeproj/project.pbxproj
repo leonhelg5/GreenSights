@@ -16,11 +16,12 @@
 		1867A798216790C400278A92 /* GS+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867A797216790C400278A92 /* GS+UIColor.swift */; };
 		1867A79A2167910600278A92 /* GS+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867A7992167910600278A92 /* GS+UIView.swift */; };
 		1867A79D2167915700278A92 /* GS+ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1867A79C2167915700278A92 /* GS+ReusableView.swift */; };
+		18716B2E218B4D8A00FD8309 /* GSVotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18716B2D218B4D8A00FD8309 /* GSVotingView.swift */; };
 		187FC97C2181B6F400890982 /* GSPostOrientationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187FC97B2181B6F400890982 /* GSPostOrientationButton.swift */; };
 		18BA9C792174B9AA00ABFDE5 /* GSTableHeaderContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BA9C782174B9AA00ABFDE5 /* GSTableHeaderContainer.swift */; };
 		18CD9E1D217DE39C00128CF4 /* GS+Flipable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD9E1C217DE39C00128CF4 /* GS+Flipable.swift */; };
 		18CD9E1F217E19A200128CF4 /* GSFeedAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18CD9E1E217E19A200128CF4 /* GSFeedAlgorithm.swift */; };
-		18EEC82521777A38000D5DED /* GSCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEC82421777A38000D5DED /* GSCollectionViewLayout.swift */; };
+		18EEC82521777A38000D5DED /* GSCustomCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EEC82421777A38000D5DED /* GSCustomCollectionViewLayout.swift */; };
 		18F5106B21771CAD006CE47F /* GSCollectionOverviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5106A21771CAD006CE47F /* GSCollectionOverviewController.swift */; };
 		18F5106D21771CE3006CE47F /* GSCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5106C21771CE3006CE47F /* GSCollectionView.swift */; };
 		18F5106F21772819006CE47F /* GS+CGSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F5106E21772819006CE47F /* GS+CGSize.swift */; };
@@ -30,8 +31,8 @@
 		FE3C2DB52173965900E700A1 /* GSPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C2DB42173965900E700A1 /* GSPickerController.swift */; };
 		FE3C2DB72173969000E700A1 /* GSPickerTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C2DB62173969000E700A1 /* GSPickerTableView.swift */; };
 		FE3C2DB921739CDC00E700A1 /* GSTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C2DB821739CDC00E700A1 /* GSTableHeaderView.swift */; };
-		FE3C2DBB2173A2C700E700A1 /* GSAltDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C2DBA2173A2C700E700A1 /* GSAltDetailTableViewCell.swift */; };
-		FE3C2DBE2173A8A600E700A1 /* GSAltDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C2DBD2173A8A600E700A1 /* GSAltDetailTableView.swift */; };
+		FE3C2DBB2173A2C700E700A1 /* GSTwoDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C2DBA2173A2C700E700A1 /* GSTwoDetailTableViewCell.swift */; };
+		FE3C2DBE2173A8A600E700A1 /* GSTwoDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE3C2DBD2173A8A600E700A1 /* GSTwoDetailTableView.swift */; };
 		FE7326EA216BF81700FE3C45 /* GSBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7326E9216BF81700FE3C45 /* GSBottomView.swift */; };
 		FE7326EC216BF83F00FE3C45 /* GSVotingStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7326EB216BF83F00FE3C45 /* GSVotingStackView.swift */; };
 		FE7326EE216BF86800FE3C45 /* GSInviteAFriendView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE7326ED216BF86800FE3C45 /* GSInviteAFriendView.swift */; };
@@ -63,8 +64,8 @@
 		FED6CAF3216CC91B005DBEDB /* GSSmallFotosGaleryCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAF2216CC91B005DBEDB /* GSSmallFotosGaleryCollectionView.swift */; };
 		FED6CAF5216CCB61005DBEDB /* GSFotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAF4216CCB61005DBEDB /* GSFotoCell.swift */; };
 		FED6CAF7216CD6CE005DBEDB /* GSAddCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAF6216CD6CE005DBEDB /* GSAddCell.swift */; };
-		FED6CAF9216CF9C3005DBEDB /* GSDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAF8216CF9C3005DBEDB /* GSDetailTableView.swift */; };
-		FED6CAFC216CFAEC005DBEDB /* GSDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAFB216CFAEC005DBEDB /* GSDetailTableViewCell.swift */; };
+		FED6CAF9216CF9C3005DBEDB /* GSOneDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAF8216CF9C3005DBEDB /* GSOneDetailTableView.swift */; };
+		FED6CAFC216CFAEC005DBEDB /* GSOneDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAFB216CFAEC005DBEDB /* GSOneDetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,11 +80,12 @@
 		1867A797216790C400278A92 /* GS+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+UIColor.swift"; sourceTree = "<group>"; };
 		1867A7992167910600278A92 /* GS+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+UIView.swift"; sourceTree = "<group>"; usesTabs = 1; };
 		1867A79C2167915700278A92 /* GS+ReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+ReusableView.swift"; sourceTree = "<group>"; };
+		18716B2D218B4D8A00FD8309 /* GSVotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSVotingView.swift; sourceTree = "<group>"; usesTabs = 1; };
 		187FC97B2181B6F400890982 /* GSPostOrientationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSPostOrientationButton.swift; sourceTree = "<group>"; };
 		18BA9C782174B9AA00ABFDE5 /* GSTableHeaderContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTableHeaderContainer.swift; sourceTree = "<group>"; usesTabs = 1; };
 		18CD9E1C217DE39C00128CF4 /* GS+Flipable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+Flipable.swift"; sourceTree = "<group>"; };
 		18CD9E1E217E19A200128CF4 /* GSFeedAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSFeedAlgorithm.swift; sourceTree = "<group>"; };
-		18EEC82421777A38000D5DED /* GSCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSCollectionViewLayout.swift; sourceTree = "<group>"; };
+		18EEC82421777A38000D5DED /* GSCustomCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSCustomCollectionViewLayout.swift; sourceTree = "<group>"; };
 		18F5106A21771CAD006CE47F /* GSCollectionOverviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSCollectionOverviewController.swift; sourceTree = "<group>"; };
 		18F5106C21771CE3006CE47F /* GSCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSCollectionView.swift; sourceTree = "<group>"; usesTabs = 1; };
 		18F5106E21772819006CE47F /* GS+CGSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+CGSize.swift"; sourceTree = "<group>"; };
@@ -93,8 +95,8 @@
 		FE3C2DB42173965900E700A1 /* GSPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSPickerController.swift; sourceTree = "<group>"; };
 		FE3C2DB62173969000E700A1 /* GSPickerTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSPickerTableView.swift; sourceTree = "<group>"; };
 		FE3C2DB821739CDC00E700A1 /* GSTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTableHeaderView.swift; sourceTree = "<group>"; usesTabs = 1; };
-		FE3C2DBA2173A2C700E700A1 /* GSAltDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSAltDetailTableViewCell.swift; sourceTree = "<group>"; };
-		FE3C2DBD2173A8A600E700A1 /* GSAltDetailTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSAltDetailTableView.swift; sourceTree = "<group>"; usesTabs = 1; };
+		FE3C2DBA2173A2C700E700A1 /* GSTwoDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTwoDetailTableViewCell.swift; sourceTree = "<group>"; };
+		FE3C2DBD2173A8A600E700A1 /* GSTwoDetailTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GSTwoDetailTableView.swift; sourceTree = "<group>"; usesTabs = 1; };
 		FE7326E9216BF81700FE3C45 /* GSBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSBottomView.swift; sourceTree = "<group>"; };
 		FE7326EB216BF83F00FE3C45 /* GSVotingStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSVotingStackView.swift; sourceTree = "<group>"; };
 		FE7326ED216BF86800FE3C45 /* GSInviteAFriendView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSInviteAFriendView.swift; sourceTree = "<group>"; };
@@ -126,8 +128,8 @@
 		FED6CAF2216CC91B005DBEDB /* GSSmallFotosGaleryCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSSmallFotosGaleryCollectionView.swift; sourceTree = "<group>"; };
 		FED6CAF4216CCB61005DBEDB /* GSFotoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSFotoCell.swift; sourceTree = "<group>"; };
 		FED6CAF6216CD6CE005DBEDB /* GSAddCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSAddCell.swift; sourceTree = "<group>"; };
-		FED6CAF8216CF9C3005DBEDB /* GSDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSDetailTableView.swift; sourceTree = "<group>"; usesTabs = 1; };
-		FED6CAFB216CFAEC005DBEDB /* GSDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSDetailTableViewCell.swift; sourceTree = "<group>"; };
+		FED6CAF8216CF9C3005DBEDB /* GSOneDetailTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSOneDetailTableView.swift; sourceTree = "<group>"; usesTabs = 1; };
+		FED6CAFB216CFAEC005DBEDB /* GSOneDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSOneDetailTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,15 +177,14 @@
 				FEC7F3C121679BCE00F9013E /* GSNavigation */,
 				1867A79321678F0D00278A92 /* GSSettings */,
 				FEAFA616216E541B0067350E /* GSReusableClasses */,
-				18EEC82321777A00000D5DED /* Layout */,
 				FEC7F3C82167B16B00F9013E /* GSBaseClasses */,
 				FEC7F3C42167ABB500F9013E /* Screens */,
 				FEC7F3CF2167C0FF00F9013E /* Models */,
+				1867A796216790A300278A92 /* GSExtensions */,
+				FE3C2DAE21734B5500E700A1 /* ReadyToDelete */,
 				1867A78121678EDC00278A92 /* AppDelegate.swift */,
 				1867A78A21678EDE00278A92 /* LaunchScreen.storyboard */,
 				1867A78D21678EDE00278A92 /* Info.plist */,
-				1867A796216790A300278A92 /* GSExtensions */,
-				FE3C2DAE21734B5500E700A1 /* ReadyToDelete */,
 			);
 			path = GreenSights;
 			sourceTree = "<group>";
@@ -220,32 +221,25 @@
 			path = GSPOP;
 			sourceTree = "<group>";
 		};
-		18BA9C7A2174E1F600ABFDE5 /* Old */ = {
+		18BA9C7A2174E1F600ABFDE5 /* Version One */ = {
 			isa = PBXGroup;
 			children = (
-				FED6CAF8216CF9C3005DBEDB /* GSDetailTableView.swift */,
-				FED6CAFB216CFAEC005DBEDB /* GSDetailTableViewCell.swift */,
+				FED6CAF8216CF9C3005DBEDB /* GSOneDetailTableView.swift */,
+				FED6CAFB216CFAEC005DBEDB /* GSOneDetailTableViewCell.swift */,
 			);
-			path = Old;
+			path = "Version One";
 			sourceTree = "<group>";
 		};
-		18EEC82321777A00000D5DED /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				18EEC82421777A38000D5DED /* GSCollectionViewLayout.swift */,
-			);
-			path = Layout;
-			sourceTree = "<group>";
-		};
-		18F5106921771C77006CE47F /* PinterestCollectionView */ = {
+		18F5106921771C77006CE47F /* CustomCollectionView */ = {
 			isa = PBXGroup;
 			children = (
 				18F5106A21771CAD006CE47F /* GSCollectionOverviewController.swift */,
-				18CD9E1E217E19A200128CF4 /* GSFeedAlgorithm.swift */,
 				18F5106C21771CE3006CE47F /* GSCollectionView.swift */,
+				18EEC82421777A38000D5DED /* GSCustomCollectionViewLayout.swift */,
+				18CD9E1E217E19A200128CF4 /* GSFeedAlgorithm.swift */,
 				1814A4E82179D11B00F64D85 /* GSPinterestCell.swift */,
 			);
-			path = PinterestCollectionView;
+			path = CustomCollectionView;
 			sourceTree = "<group>";
 		};
 		FE3C2DAE21734B5500E700A1 /* ReadyToDelete */ = {
@@ -269,13 +263,13 @@
 			path = PickerTableView;
 			sourceTree = "<group>";
 		};
-		FE3C2DBC2173A88B00E700A1 /* New */ = {
+		FE3C2DBC2173A88B00E700A1 /* Version Two */ = {
 			isa = PBXGroup;
 			children = (
-				FE3C2DBD2173A8A600E700A1 /* GSAltDetailTableView.swift */,
-				FE3C2DBA2173A2C700E700A1 /* GSAltDetailTableViewCell.swift */,
+				FE3C2DBD2173A8A600E700A1 /* GSTwoDetailTableView.swift */,
+				FE3C2DBA2173A2C700E700A1 /* GSTwoDetailTableViewCell.swift */,
 			);
-			path = New;
+			path = "Version Two";
 			sourceTree = "<group>";
 		};
 		FE7326EF216C9ACA00FE3C45 /* Detail */ = {
@@ -284,6 +278,7 @@
 				FE7326F2216C9E4D00FE3C45 /* GSDetailStructure.swift */,
 				FE7326F0216C9B6C00FE3C45 /* GSDetailViewController.swift */,
 				FE7326F4216CA37200FE3C45 /* GSDetailScrollView.swift */,
+				18716B2D218B4D8A00FD8309 /* GSVotingView.swift */,
 				FED6CAFA216CFAC9005DBEDB /* DetailData */,
 				FED6CAF1216CC8F6005DBEDB /* Fotos */,
 			);
@@ -314,13 +309,13 @@
 			path = GSReusableClasses;
 			sourceTree = "<group>";
 		};
-		FEAFA61B216E9E9D0067350E /* Test */ = {
+		FEAFA61B216E9E9D0067350E /* Temporary Test */ = {
 			isa = PBXGroup;
 			children = (
 				FEAFA61C216E9EAB0067350E /* TestVC.swift */,
 				FEAFA61E216E9ED20067350E /* TestView.swift */,
 			);
-			path = Test;
+			path = "Temporary Test";
 			sourceTree = "<group>";
 		};
 		FEC7F3C121679BCE00F9013E /* GSNavigation */ = {
@@ -335,9 +330,9 @@
 		FEC7F3C42167ABB500F9013E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				18F5106921771C77006CE47F /* PinterestCollectionView */,
+				18F5106921771C77006CE47F /* CustomCollectionView */,
 				FE3C2DB32173963200E700A1 /* PickerTableView */,
-				FEAFA61B216E9E9D0067350E /* Test */,
+				FEAFA61B216E9E9D0067350E /* Temporary Test */,
 				FE91BECC2170C498003B4430 /* PhotoSelection */,
 				FEC7F3C52167AC0C00F9013E /* TableOverview */,
 				FE7326EF216C9ACA00FE3C45 /* Detail */,
@@ -385,8 +380,8 @@
 		FED6CAFA216CFAC9005DBEDB /* DetailData */ = {
 			isa = PBXGroup;
 			children = (
-				18BA9C7A2174E1F600ABFDE5 /* Old */,
-				FE3C2DBC2173A88B00E700A1 /* New */,
+				18BA9C7A2174E1F600ABFDE5 /* Version One */,
+				FE3C2DBC2173A88B00E700A1 /* Version Two */,
 			);
 			path = DetailData;
 			sourceTree = "<group>";
@@ -469,6 +464,7 @@
 				FE7326F5216CA37200FE3C45 /* GSDetailScrollView.swift in Sources */,
 				FE3C2DB221738AF300E700A1 /* GSShowMoreButton.swift in Sources */,
 				FE7326F3216C9E4D00FE3C45 /* GSDetailStructure.swift in Sources */,
+				18716B2E218B4D8A00FD8309 /* GSVotingView.swift in Sources */,
 				FE3C2DB021734DB800E700A1 /* GSShowAllOrHideButton.swift in Sources */,
 				18F5106D21771CE3006CE47F /* GSCollectionView.swift in Sources */,
 				FE7326EA216BF81700FE3C45 /* GSBottomView.swift in Sources */,
@@ -477,10 +473,10 @@
 				1867A79521678F2600278A92 /* GSSettings.swift in Sources */,
 				FE3C2DB72173969000E700A1 /* GSPickerTableView.swift in Sources */,
 				FE91BED02170C534003B4430 /* GSPhotoSelectorCollectionView.swift in Sources */,
-				FED6CAF9216CF9C3005DBEDB /* GSDetailTableView.swift in Sources */,
+				FED6CAF9216CF9C3005DBEDB /* GSOneDetailTableView.swift in Sources */,
 				FED6CAF3216CC91B005DBEDB /* GSSmallFotosGaleryCollectionView.swift in Sources */,
 				FEC7F3CC2167B21B00F9013E /* GSNavigationController.swift in Sources */,
-				FE3C2DBB2173A2C700E700A1 /* GSAltDetailTableViewCell.swift in Sources */,
+				FE3C2DBB2173A2C700E700A1 /* GSTwoDetailTableViewCell.swift in Sources */,
 				FEAFA61D216E9EAB0067350E /* TestVC.swift in Sources */,
 				1867A798216790C400278A92 /* GS+UIColor.swift in Sources */,
 				FEC7F3D12167C11900F9013E /* GSListModel.swift in Sources */,
@@ -494,20 +490,20 @@
 				FE7326F1216C9B6C00FE3C45 /* GSDetailViewController.swift in Sources */,
 				FEC7F3CA2167B19400F9013E /* GSBaseViewController.swift in Sources */,
 				1867A78421678EDC00278A92 /* GSListViewController.swift in Sources */,
-				FED6CAFC216CFAEC005DBEDB /* GSDetailTableViewCell.swift in Sources */,
+				FED6CAFC216CFAEC005DBEDB /* GSOneDetailTableViewCell.swift in Sources */,
 				FEC7F3C72167AC6C00F9013E /* GSListView.swift in Sources */,
 				18F5106B21771CAD006CE47F /* GSCollectionOverviewController.swift in Sources */,
 				FE7326EE216BF86800FE3C45 /* GSInviteAFriendView.swift in Sources */,
 				FEC8012621723CF600584EE2 /* TestCell.swift in Sources */,
 				FEC7F3C321679C2400F9013E /* GSTabBarController.swift in Sources */,
-				18EEC82521777A38000D5DED /* GSCollectionViewLayout.swift in Sources */,
+				18EEC82521777A38000D5DED /* GSCustomCollectionViewLayout.swift in Sources */,
 				FED6CAF5216CCB61005DBEDB /* GSFotoCell.swift in Sources */,
 				187FC97C2181B6F400890982 /* GSPostOrientationButton.swift in Sources */,
 				FE91BED22170D197003B4430 /* GSPhotoSelectorHeader.swift in Sources */,
 				FE3C2DB52173965900E700A1 /* GSPickerController.swift in Sources */,
 				18BA9C792174B9AA00ABFDE5 /* GSTableHeaderContainer.swift in Sources */,
 				18CD9E1F217E19A200128CF4 /* GSFeedAlgorithm.swift in Sources */,
-				FE3C2DBE2173A8A600E700A1 /* GSAltDetailTableView.swift in Sources */,
+				FE3C2DBE2173A8A600E700A1 /* GSTwoDetailTableView.swift in Sources */,
 				18CD9E1D217DE39C00128CF4 /* GS+Flipable.swift in Sources */,
 				18F5106F21772819006CE47F /* GS+CGSize.swift in Sources */,
 				FEC7F3D32167ED7C00F9013E /* GSOverviewTableViewCell.swift in Sources */,

@@ -59,7 +59,7 @@ extension GSPickerTableView: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = self.tableView.dequeueReusableCell(withIdentifier: GSAltDetailTableViewCell.reuseIdentifier, for: indexPath) as! GSAltDetailTableViewCell
+		let cell = self.tableView.dequeueReusableCell(withIdentifier: GSTwoDetailTableViewCell.reuseIdentifier, for: indexPath) as! GSTwoDetailTableViewCell
 		return cell
 	}
 }

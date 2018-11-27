@@ -55,7 +55,7 @@ class GSCollectionView: UIView {
 		return view
 	}()
 	
-	let collectionViewLayout = GSCollectionViewLayout()
+	let collectionViewLayout = GSCustomCollectionViewLayout()
 	lazy var collectionView: UICollectionView = {
 		let collectionview = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
 		collectionview.showsHorizontalScrollIndicator   = false
@@ -202,7 +202,7 @@ extension GSCollectionView: UICollectionViewDelegate, UICollectionViewDataSource
 	}
 }
 
-extension GSCollectionView: GSCollectionViewLayoutDelegate {
+extension GSCollectionView: GSCustomCollectionViewLayoutDelegate {
 	func somethingWentWrong() {
 		print("SOMETHING WENT WRONG")
 		resetLayout()

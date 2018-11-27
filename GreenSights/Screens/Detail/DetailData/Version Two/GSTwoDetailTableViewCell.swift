@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GSAltDetailTableViewCell: UITableViewCell, ReusableView {
+class GSTwoDetailTableViewCell: UITableViewCell, ReusableView {
 	
 	//MARK: - Init & View Loading
 	override init(style: UITableViewCell.CellStyle = .value1, reuseIdentifier: String?) {

@@ -63,6 +63,8 @@ struct GSSettings {
 			static let squareIcon		= "SquareIcon"
 			static let portraitIcon 	= "PortraitIcon"
 			static let landscapeIcon 	= "LandscapeIcon"
+			static let dismissIcon 		= "Dismiss"
+			static let roundedBG		= "RoundedBackground"
 		}
 		
 		struct animations {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol GSCollectionViewLayoutDelegate: class {
+protocol GSCustomCollectionViewLayoutDelegate: class {
     
     func collectionView(_ collectionView:UICollectionView, sizeForCellAtIndexPath indexPath:IndexPath) -> cellSize
     func somethingWentWrong()
@@ -18,9 +18,9 @@ protocol GSCollectionViewLayoutDelegate: class {
  Note: As prepare() is called whenever the collection view's layout is invalidated, there are many situations in a typical implementation where you might need to recalculate attributes here. For example, the bounds of the UICollectionView might change - such as when the orientation changes - or items may be added or removed from the collection. These cases are out of scope for this tutorial, but it's important to be aware of them in a non-trivial implementation.
  */
 
-class GSCollectionViewLayout: UICollectionViewLayout {
+class GSCustomCollectionViewLayout: UICollectionViewLayout {
     // 1 This keeps a reference to the delegate.
-    weak var delegate: GSCollectionViewLayoutDelegate!
+    weak var delegate: GSCustomCollectionViewLayoutDelegate!
     
     // 2 These are two properties for configuring the layout: the number of columns and the cell padding.
     fileprivate var numberOfColumns = 2

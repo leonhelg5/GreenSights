@@ -11,9 +11,10 @@ import Foundation
 
 protocol altDetailsTableViewDelegate: class {
 	func needsToUpdateDetailsTableViewHeight()
+	func detailRowPressed(index: Int)
 }
 
-class GSAltDetailTableView: UIView {
+class GSTwoDetailTableView: UIView {
 	
 	weak var delegate: altDetailsTableViewDelegate?
 	let titles = ["Sitzplätze", "Regensicher", "Lautstärkentoleranz", "Polizeipräsenz", "Anwohner", "Passanten", "Erreichbarkeit"]
@@ -50,7 +51,7 @@ class GSAltDetailTableView: UIView {
 		tableview.sectionHeaderHeight = headerHeight
 //		tableview.estimatedSectionHeaderHeight = headerHeight
 		tableview.sectionFooterHeight = footerHeight
-		tableview.register(GSAltDetailTableViewCell.self, forCellReuseIdentifier: GSAltDetailTableViewCell.reuseIdentifier)
+		tableview.register(GSTwoDetailTableViewCell.self, forCellReuseIdentifier: GSTwoDetailTableViewCell.reuseIdentifier)
 		tableview.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: headerId)
 		tableview.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: footerId)
 		return tableview
@@ -77,7 +78,7 @@ class GSAltDetailTableView: UIView {
 	/**
 	The animation is made by modifying the heightConstraint of this class.
 	In Case of insert, insert is made before changing the constraint
-	In Case of delete, delete is made after the height is back to small. Call is made after the delegate method is finished (still in delegate)
+	In Case of delete, delete is made after the height is set back to small. Call is made after the delegate method is finished (still in delegate)
 	*/
 	func handleShowAll() {
 		if isExpanded {
@@ -117,14 +118,14 @@ class GSAltDetailTableView: UIView {
 	}
 }
 
-extension GSAltDetailTableView: UITableViewDelegate {
+extension GSTwoDetailTableView: UITableViewDelegate {
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-		print("row pressed")
 		tableView.deselectRow(at: indexPath, animated: false)
+		delegate?.detailRowPressed(index: indexPath.row)
 	}
 }
 
-extension GSAltDetailTableView: UITableViewDataSource {
+extension GSTwoDetailTableView: UITableViewDataSource {
 	
 	func numberOfSections(in tableView: UITableView) -> Int {
 		return 1
@@ -138,7 +139,7 @@ extension GSAltDetailTableView: UITableViewDataSource {
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = self.tableView.dequeueReusableCell(withIdentifier: GSAltDetailTableViewCell.reuseIdentifier, for: indexPath) as! GSAltDetailTableViewCell
+		let cell = self.tableView.dequeueReusableCell(withIdentifier: GSTwoDetailTableViewCell.reuseIdentifier, for: indexPath) as! GSTwoDetailTableViewCell
 		cell.textLabel?.text = titles[indexPath.row]
 		cell.detailTextLabel?.text = values[indexPath.row]
 		return cell
@@ -147,7 +148,7 @@ extension GSAltDetailTableView: UITableViewDataSource {
 	
 	func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
 		let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerId)
-		header?.textLabel?.text = "Details \u{23f5}"
+		header?.textLabel?.text = "Details"
 //		header.detailTextLabel?.text = "Expand all"
 //		header.detailTextLabel?.underline()
 		header?.tag = section
@@ -160,7 +161,7 @@ extension GSAltDetailTableView: UITableViewDataSource {
 	}
 }
 
-extension GSAltDetailTableView: UIGestureRecognizerDelegate {
+extension GSTwoDetailTableView: UIGestureRecognizerDelegate {
 	@objc func handleHeaderTap(sender: UITapGestureRecognizer) {
 		print("header pressed")
 		isExpanded.toggle()
