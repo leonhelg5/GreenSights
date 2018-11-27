@@ -25,7 +25,7 @@ class GSVotingView: UIView {
 		return effectView
 	}()
 	
-	let optionsContainerView: UIView = {
+	let pointsContainerView: UIView = {
 		let view = UIView()
 		//stackView.backgroundColor = UIColor.red.withAlphaComponent(0.5)
 		return view
@@ -47,10 +47,14 @@ class GSVotingView: UIView {
 		return button
 	}()
 	
+	let labelContainerView : UIView = {
+		let view = UIView()
+		view.clipsToBounds = true
+		return view
+	}()
+	
 	
 	var optionPoints = [GSVotingOptionBulletPoint(), GSVotingOptionBulletPoint(), GSVotingOptionBulletPoint(), GSVotingOptionBulletPoint(), GSVotingOptionBulletPoint()]
-	//var optionLabelTrailingConstraints = [NSLayoutConstraint(), NSLayoutConstraint(), NSLayoutConstraint(), NSLayoutConstraint(), NSLayoutConstraint()]
-	//var optionLabelLeadingConstraints = [NSLayoutConstraint(), NSLayoutConstraint(), NSLayoutConstraint(), NSLayoutConstraint(), NSLayoutConstraint()]
 	let optionLabels = [GSVotingOptionLabel(), GSVotingOptionLabel(), GSVotingOptionLabel(), GSVotingOptionLabel(), GSVotingOptionLabel()]
 	
 	override init(frame: CGRect) {
@@ -67,51 +71,46 @@ class GSVotingView: UIView {
 	func setupSubviews() {
 		addSubview(blurryBackGround)
 		addSubview(optionsBackView)
-		addSubview(optionsContainerView)
-		optionsContainerView.layer.cornerRadius = widthOfObjects / 2
+		addSubview(pointsContainerView)
+		pointsContainerView.layer.cornerRadius = widthOfObjects / 2
+		addSubview(labelContainerView)
 		addSubview(dismissButton)
 		dismissButton.addTarget(self, action: #selector(handleDismissAction), for: .touchUpInside)
 		dismissButton.alpha = 0
 		
 		for index in 0..<optionPoints.count {
 			let point = optionPoints[index]
-			optionsContainerView.addSubview(point)
+			pointsContainerView.addSubview(point)
 			point.alpha = 0
 			
 			let label = optionLabels[index]
-			optionsContainerView.addSubview(label)
+			labelContainerView.addSubview(label)
 			label.alpha = 0
-			optionsContainerView.sendSubviewToBack(label)
-			label.frame = .zero
 		}
 	}
 	
 	
 	func setupConstraints() {
 		blurryBackGround.fillSuperview(onlySafeArea: false)
-		optionsContainerView.anchor(top: nil, leading: nil, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 8, width: widthOfObjects, height: 270)
-		optionsContainerView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -100).isActive = true
+		pointsContainerView.anchor(top: nil, leading: nil, bottom: nil, trailing: trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 8, width: widthOfObjects, height: 270)
+		pointsContainerView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -100).isActive = true
+		labelContainerView.anchor(top: pointsContainerView.topAnchor, leading: leadingAnchor, bottom: pointsContainerView.bottomAnchor, trailing: pointsContainerView.leadingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: 0, height: 0)
 		
 
 		dismissButton.imageEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-		dismissButton.anchor(top: optionsContainerView.bottomAnchor, leading: optionsContainerView.leadingAnchor, bottom: nil, trailing: optionsContainerView.trailingAnchor, paddingTop: 20, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: 0, height: widthOfObjects)
+		dismissButton.anchor(top: pointsContainerView.bottomAnchor, leading: pointsContainerView.leadingAnchor, bottom: nil, trailing: pointsContainerView.trailingAnchor, paddingTop: 20, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: 0, height: widthOfObjects)
 		
 		for index in 0..<optionPoints.count {
 			let point = optionPoints[index]
 			let bottomPadding:CGFloat = CGFloat(index) * 50 + 10
-			point.anchor(top: nil, leading: nil, bottom: optionsContainerView.bottomAnchor, trailing: optionsContainerView.trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: bottomPadding, paddingTrailing: 0, width: widthOfObjects, height: widthOfObjects)
+			point.anchor(top: nil, leading: nil, bottom: pointsContainerView.bottomAnchor, trailing: pointsContainerView.trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: bottomPadding, paddingTrailing: 0, width: widthOfObjects, height: widthOfObjects)
 			
 			let label = optionLabels[index]
 			label.translatesAutoresizingMaskIntoConstraints = false
-			label.centerYAnchor.constraint(equalTo: point.centerYAnchor).isActive = true
-			label.trailingAnchor.constraint(equalTo: point.leadingAnchor).isActive = true
-			//optionLabelLeadingConstraints[index] = label.leadingAnchor.constraint(equalTo: point.leadingAnchor)
-			//optionLabelLeadingConstraints[index].isActive = true
-			//optionLabelTrailingConstraints[index] = label.trailingAnchor.constraint(equalTo: point.leadingAnchor, constant: 0)
-			//optionLabelTrailingConstraints[index].isActive = true
+			label.anchor(top: nil, leading: nil, bottom: labelContainerView.bottomAnchor, trailing: pointsContainerView.trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: bottomPadding+17, paddingTrailing: -100, width: 0, height: 0)
 		}
 		
-		optionsBackView.anchor(top: nil, leading: nil, bottom: optionsContainerView.bottomAnchor, trailing: optionsContainerView.trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: widthOfObjects, height: 0)
+		optionsBackView.anchor(top: nil, leading: nil, bottom: pointsContainerView.bottomAnchor, trailing: pointsContainerView.trailingAnchor, paddingTop: 0, paddingLeading: 0, paddingBottom: 0, paddingTrailing: 0, width: widthOfObjects, height: 0)
 		optionsBackViewHeightConstraint = optionsBackView.heightAnchor.constraint(equalToConstant: 0)
 		optionsBackViewHeightConstraint.isActive = true
 	}
@@ -134,15 +133,18 @@ class GSVotingView: UIView {
 		}
 		//Labels
 		for (index, label) in optionLabels.enumerated() {
-			UIView.animate(withDuration: duration*2, delay: duration*Double(index + 1) + duration, options: .curveEaseOut, animations: {
-				label.frame.size.width = 200
-				label.transform = label.transform.translatedBy(x: -150, y: 0)
+			let translation = label.transform.translatedBy(x: -200, y: 0)
+			UIView.animate(withDuration: duration*2, delay: duration*Double(index) + duration, options: .curveEaseOut, animations: {
 				label.alpha = 1
+				label.transform = translation
 			})
 		}
 		//Background
-		self.optionsBackViewHeightConstraint.constant = optionsContainerView.frame.height
-		UIView.animate(withDuration: duration * Double(optionPoints.count), delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+		self.optionsBackViewHeightConstraint.constant = pointsContainerView.frame.height
+//		UIView.animate(withDuration: duration * Double(optionPoints.count), delay: 0, usingSpringWithDamping: 0.75, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+//			self.layoutSubviews()
+//		})
+		UIView.animate(withDuration: duration * Double(optionPoints.count), delay: 0, options: .curveEaseOut, animations: {
 			self.layoutSubviews()
 		})
 		//Cancel Button
@@ -157,8 +159,16 @@ class GSVotingView: UIView {
 		//Points
 		for index in 0..<optionPoints.count {
 			let point = optionPoints[(optionPoints.count - 1) - index]
-			UIView.animate(withDuration: duration, delay: duration*Double(index), options: .curveEaseOut, animations: {
+			UIView.animate(withDuration: duration, delay: duration*Double(index + 1), options: .curveEaseOut, animations: {
 				point.alpha = 0
+			})
+		}
+		for index in 0..<optionLabels.count {
+			let label = optionLabels[(optionLabels.count - 1) - index]
+			let translation = label.transform.translatedBy(x: 200, y: 0)
+			UIView.animate(withDuration: duration*2, delay: duration*Double(index), options: .curveEaseOut, animations: {
+				label.alpha = 0.75
+				label.transform = translation
 			})
 		}
 		//Background & Cancel Button
@@ -167,7 +177,9 @@ class GSVotingView: UIView {
 		UIView.animate(withDuration: duration * Double(optionPoints.count), delay: 0.2, options: .curveEaseOut, animations: {
 			self.layoutSubviews()
 			self.dismissButton.transform = rotate
+			self.dismissButton.alpha = 0.9
 		}) { (_) in
+			self.dismissButton.alpha = 0
 			DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
 				self.delegate?.dismissVotingView()
 			}
