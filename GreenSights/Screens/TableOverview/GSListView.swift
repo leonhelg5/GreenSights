@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MyFirstFramework
 
 protocol listViewDelegate: class {
 	func changeViewTo(newView: UIView, oldView: UIView)

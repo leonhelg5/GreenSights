@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MyFirstFramework
 
 protocol GSFotosViewDelegate: class {
 	func viewDidLayoutSubviews()

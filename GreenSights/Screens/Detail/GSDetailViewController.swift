@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import MySecondFramework
 
 class GSDetailViewController: GSBaseViewController {
 	

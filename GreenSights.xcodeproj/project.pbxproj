@@ -50,6 +50,7 @@
 		FEAFA61D216E9EAB0067350E /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAFA61C216E9EAB0067350E /* TestVC.swift */; };
 		FEAFA61F216E9ED20067350E /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEAFA61E216E9ED20067350E /* TestView.swift */; };
 		FEB6031A21721AAD00A2EF29 /* TODO in Resources */ = {isa = PBXBuildFile; fileRef = FEB6031921721AAD00A2EF29 /* TODO */; };
+		FEBE39FA21D27FE6003E39B8 /* GSTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBE39F921D27FE6003E39B8 /* GSTextFieldView.swift */; };
 		FEC7F3C321679C2400F9013E /* GSTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC7F3C221679C2400F9013E /* GSTabBarController.swift */; };
 		FEC7F3C72167AC6C00F9013E /* GSListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC7F3C62167AC6C00F9013E /* GSListView.swift */; };
 		FEC7F3CA2167B19400F9013E /* GSBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEC7F3C92167B19400F9013E /* GSBaseViewController.swift */; };
@@ -67,6 +68,19 @@
 		FED6CAF9216CF9C3005DBEDB /* GSOneDetailTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAF8216CF9C3005DBEDB /* GSOneDetailTableView.swift */; };
 		FED6CAFC216CFAEC005DBEDB /* GSOneDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FED6CAFB216CFAEC005DBEDB /* GSOneDetailTableViewCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		18012C68220C3B5800E4FE01 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		1814A4E62179CE5500F64D85 /* GS+Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GS+Int.swift"; sourceTree = "<group>"; };
@@ -109,11 +123,12 @@
 		FE91BED32170D42B003B4430 /* GSPhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSPhotoSelectorCell.swift; sourceTree = "<group>"; usesTabs = 1; };
 		FE91BED521711A09003B4430 /* Icons.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icons.xcassets; sourceTree = "<group>"; };
 		FE91BED9217140C2003B4430 /* GSInfoButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSInfoButton.swift; sourceTree = "<group>"; };
-		FEAFA617216E543C0067350E /* GSStarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSStarButton.swift; sourceTree = "<group>"; };
+		FEAFA617216E543C0067350E /* GSStarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSStarButton.swift; sourceTree = "<group>"; usesTabs = 1; };
 		FEAFA619216E5AC20067350E /* Pictures.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Pictures.xcassets; sourceTree = "<group>"; };
 		FEAFA61C216E9EAB0067350E /* TestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		FEAFA61E216E9ED20067350E /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		FEB6031921721AAD00A2EF29 /* TODO */ = {isa = PBXFileReference; lastKnownFileType = text; name = TODO; path = GreenSights/TODO; sourceTree = "<group>"; };
+		FEBE39F921D27FE6003E39B8 /* GSTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTextFieldView.swift; sourceTree = "<group>"; };
 		FEC7F3C221679C2400F9013E /* GSTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSTabBarController.swift; sourceTree = "<group>"; usesTabs = 1; };
 		FEC7F3C62167AC6C00F9013E /* GSListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSListView.swift; sourceTree = "<group>"; };
 		FEC7F3C92167B19400F9013E /* GSBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GSBaseViewController.swift; sourceTree = "<group>"; };
@@ -305,6 +320,7 @@
 				FE91BED9217140C2003B4430 /* GSInfoButton.swift */,
 				FE3C2DAF21734DB800E700A1 /* GSShowAllOrHideButton.swift */,
 				FE3C2DB121738AF300E700A1 /* GSShowMoreButton.swift */,
+				FEBE39F921D27FE6003E39B8 /* GSTextFieldView.swift */,
 			);
 			path = GSReusableClasses;
 			sourceTree = "<group>";
@@ -396,6 +412,7 @@
 				1867A77A21678EDC00278A92 /* Sources */,
 				1867A77B21678EDC00278A92 /* Frameworks */,
 				1867A77C21678EDC00278A92 /* Resources */,
+				18012C68220C3B5800E4FE01 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -461,6 +478,7 @@
 			files = (
 				FE3C2DAD217345D400E700A1 /* GS+UILabel.swift in Sources */,
 				FEAFA618216E543C0067350E /* GSStarButton.swift in Sources */,
+				FEBE39FA21D27FE6003E39B8 /* GSTextFieldView.swift in Sources */,
 				FE7326F5216CA37200FE3C45 /* GSDetailScrollView.swift in Sources */,
 				FE3C2DB221738AF300E700A1 /* GSShowMoreButton.swift in Sources */,
 				FE7326F3216C9E4D00FE3C45 /* GSDetailStructure.swift in Sources */,
@@ -649,11 +667,12 @@
 		1867A79121678EDE00278A92 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NAVXLKMRN3;
 				INFOPLIST_FILE = GreenSights/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -668,11 +687,12 @@
 		1867A79221678EDE00278A92 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NAVXLKMRN3;
 				INFOPLIST_FILE = GreenSights/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

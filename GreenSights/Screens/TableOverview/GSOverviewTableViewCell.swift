@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MyFirstFramework
 
 class GSOverviewTableViewCell: UITableViewCell, ReusableView {
 	

@@ -8,18 +8,18 @@
 
 import UIKit
 
-class GSStarButton: UIButton {
-    
+public class GSStarButton: UIButton {
+	
 	let representingSpotID: String = ""
 	
-	override init(frame: CGRect) {
+	override public init(frame: CGRect) {
 		super.init(frame: frame)
 		self.setImage(UIImage(named: GSSettings.ui.navBarIcons.starUnselected)?.withRenderingMode(.alwaysTemplate), for: .normal)
 		self.setImage(UIImage(named: GSSettings.ui.navBarIcons.starSelected)?.withRenderingMode(.alwaysTemplate), for: .selected)
 		self.tintColor = GSSettings.ui.colors.tintColor
 	}
 	
-	override var intrinsicContentSize: CGSize {
+	override public var intrinsicContentSize: CGSize {
 		return CGSize(width: 30, height: 30)
 	}
 	
